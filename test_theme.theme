@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * Contains theme override and preprocess functions.
+ */
+
+use Drupal\Component\Utility\String;
+use Drupal\Component\Utility\Xss;
+use Drupal\Core\Template\Attribute;
+
+/**
+ * Implements hook_preprocess_HOOK() for page templates.
+ */
+function test_theme_preprocess_page(&$variables) {
+
+}

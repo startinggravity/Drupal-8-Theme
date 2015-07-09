@@ -1,0 +1,19 @@
+{
+  "name": "test_theme",
+  "version": "0.0.0",
+  "authors": [
+    "Jim Smith <jim@startinggravity.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "singularity": "~1.6.2"
+  }
+}
