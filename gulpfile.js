@@ -7,8 +7,8 @@ var reload      = browserSync.reload;
 var shell = require('gulp-shell');
 var autoprefixer = require('gulp-autoprefixer');
  
-// sass task
-gulp.task('sass', function () {
+// Drupal theme Sass task.
+gulp.task('sass-drupal', function () {
     return gulp.src('scss/**/*.scss')
         .pipe(sourcemaps.init())
             .pipe(autoprefixer())
@@ -26,6 +26,41 @@ gulp.task('sass', function () {
         .pipe(browserSync.reload({stream:true}));
 });
  
+// Process JS files in Drupal and return the stream.
+gulp.task('js-drupal', function () {
+    return gulp.src('js/*js')
+        .pipe(gulp.dest('js'));
+});
+
+// PatternLab Sass task.
+gulp.task('sass-patternlab', function () {
+    return gulp.src('patternlab-twig/scss/**/*.scss')
+        .pipe(sourcemaps.init())
+        .pipe(autoprefixer())
+        .pipe(sass({
+            //outputStyle: 'compressed',
+            outputStyle: 'nested',
+            precision: 10,
+            onError: function (err) {
+                notify().write(err);
+            }
+        }))
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest('patternlab-twig/css'))
+        .pipe(filter('patternlab-twig/scss**/*.css')) // Filtering stream to only css files
+        .pipe(browserSync.reload({stream:true}));
+});
+
+// Update PatternLab pages.
+gulp.task('generate-patternlab', shell.task([
+  'php patternlab-twig/core/console --generate'
+]));
+
+// Sync PatternLab Sass with Drupal Sass.
+gulp.task('sync-sass', shell.task([
+    'rsync -r patternlab-twig/sass/* sass/'
+]));
+
 // process JS files and return the stream.
 gulp.task('js', function () {
     return gulp.src('js/*js')
@@ -37,7 +72,7 @@ gulp.task('drush', shell.task([
   'drush cache-clear theme-registry'
 ]));
  
-// BrowserSync
+// BrowserSync.
 gulp.task('browser-sync', function() {
     //watch files
     var files = [
@@ -55,7 +90,7 @@ gulp.task('browser-sync', function() {
     });
 });
 
-// Autoprefixer
+// Autoprefixer.
 gulp.task('autoprefixer', function () {
     return gulp.src('src/app.css')
         .pipe(autoprefixer({
@@ -66,8 +101,8 @@ gulp.task('autoprefixer', function () {
 });
  
  
-// Default task to be run with `gulp`
-gulp.task('default', ['sass', 'js', 'drush', 'browser-sync'], function () {
+// Default task to be run with `gulp`.
+gulp.task('default', ['sass-drupal', 'js-drupal', 'drush', 'browser-sync'], function () {
     gulp.watch("scss/**/*.scss", ['sass']);
     gulp.watch("js/*.js", ['js']);
 });
