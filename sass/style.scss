@@ -1,0 +1,16 @@
+////////////////////////
+// Styles
+////////////////////////
+
+@import "../bower_components/breakpoint-sass/stylesheets/breakpoint";
+@import "../bower_components/singularity/stylesheets/singularitygs";
+@import "../bower_components/sassy-maps/sass/sassy-maps";
+@import "../bower_components/sass-toolkit/stylesheets/toolkit";
+@import "../bower_components/sass-toolkit/stylesheets/toolkit/kickstart";
+
+// Base
+@import "base/colors";
+
+p {
+  color: $yellow;
+}

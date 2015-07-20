@@ -15,5 +15,8 @@
   ],
   "dependencies": {
     "singularity": "~1.6.2"
+  },
+  "devDependencies": {
+    "sass-toolkit": "~2.9.0"
   }
 }

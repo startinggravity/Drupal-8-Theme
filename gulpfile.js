@@ -1,11 +1,20 @@
-var gulp        = require("gulp");
-var sass        = require("gulp-sass");
-var filter      = require('gulp-filter');
-var sourcemaps = require('gulp-sourcemaps');
-var browserSync = require("browser-sync");
-var reload      = browserSync.reload;
-var shell = require('gulp-shell');
+var gulp         = require("gulp");
+var sass         = require("gulp-sass");
+var filter       = require('gulp-filter');
+var sourcemaps   = require('gulp-sourcemaps');
+var browserSync  = require("browser-sync");
+var reload       = browserSync.reload;
+var shell        = require('gulp-shell');
 var autoprefixer = require('gulp-autoprefixer');
+var install      = require("gulp-install");
+var plumber      = require('gulp-plumber');
+
+
+// Automatically install npm and bower packages found in package.json and bower.json.
+gulp.task('install-all', function () {
+    return gulp.src(['./bower.json', './package.json'])
+        .pipe(install());
+});
  
 // Drupal theme Sass task.
 gulp.task('sass-drupal', function () {
@@ -22,8 +31,25 @@ gulp.task('sass-drupal', function () {
             }))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('css'))
-        .pipe(filter('scss**/*.css')) // Filtering stream to only css files
+        .pipe(filter('css**/*.css')) // Filtering stream to only css files
         .pipe(browserSync.reload({stream:true}));
+});
+
+gulp.task('sass', function() {
+    return gulp.src('sass/**/*.scss')
+        .pipe(sass({
+            outputStyle: 'nested',
+            onSuccess: function(css) {
+                var dest = css.stats.entry.split('/');
+                log(c.green('sass'), 'compiled to', dest[dest.length - 1]);
+            },
+            onError: function(err, res) {
+                log(c.red('Sass failed to compile'));
+                log(c.red('> ') + err.file.split('/')[err.file.split('/').length - 1] + ' ' + c.underline('line ' + err.line) + ': ' + err.message);
+            }
+        }))
+        .pipe(autoprefixer("last 2 versions", "> 1%"))
+        .pipe(gulp.dest('css'));
 });
  
 // Process JS files in Drupal and return the stream.
@@ -93,6 +119,7 @@ gulp.task('browser-sync', function() {
 // Autoprefixer.
 gulp.task('autoprefixer', function () {
     return gulp.src('src/app.css')
+        .pipe(plumber())
         .pipe(autoprefixer({
             browsers: ['last 2 versions'],
             cascade: false

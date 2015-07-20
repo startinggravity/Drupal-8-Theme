@@ -1,13 +1,13 @@
-name: Test Theme
+name: Drupal 8 Theme
 type: theme
-description: 'A test theme for Healthit.gov - Drupal 8'
+description: 'A starter theme for Drupal 8'
 package: Custom
 version: VERSION
 core: 8.x
 
 # Locate files
 libraries:
-  - test_theme/globalstyling
+  - drupal8_theme/globalstyling
 
 # Specify regions
 regions:
