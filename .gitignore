@@ -1,0 +1,17 @@
+# Bundler
+.vendor
+
+# Bower
+bower_components
+
+# npm
+node_modules
+
+# Sass
+*/.sass-cache
+
+# API keys
+settings.json
+
+# PHPStorm
+.idea
