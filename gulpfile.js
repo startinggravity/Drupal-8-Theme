@@ -108,9 +108,9 @@ gulp.task('browser-sync', function() {
     'templates/*.twig'
     ];
  
-    //initialize browsersync
+    //initialize Browsersync
     browserSync.init(files, {
-    //browsersync with a php server
+    //Browsersync with a php server
     proxy: "drupal.loc",
     notify: true
     });
@@ -125,6 +125,10 @@ gulp.task('autoprefixer', function () {
             cascade: false
         }))
         .pipe(gulp.dest('dist'));
+});
+
+// Test.
+gulp.task('test', function () {
 });
  
  
