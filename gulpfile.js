@@ -130,8 +130,7 @@ gulp.task('autoprefixer', function () {
 // Test.
 gulp.task('test', function () {
 });
- 
- 
+
 // Default task to be run with `gulp`.
 gulp.task('default', ['sass-drupal', 'js-drupal', 'drush', 'browser-sync'], function () {
     gulp.watch("scss/**/*.scss", ['sass']);
