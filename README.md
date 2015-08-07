@@ -23,5 +23,5 @@ and data (pre)processing of the output here as needed.<br />
 8. Edit your_theme.breakpoints.yml as needed.<br />
 9. <code>mv drupal8_theme.libraries.yml your_theme.libraries.yml</code><br />
 10. Edit your_theme.libraries.yml as needed.<br />
-11. <code>node install</code>
-12. <code>gulp install-all</code>
+11. <code>node install</code><br />
+12. <code>gulp install-all</code><br />
