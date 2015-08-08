@@ -9,6 +9,23 @@ var autoprefixer = require('gulp-autoprefixer');
 var install      = require("gulp-install");
 var plumber      = require('gulp-plumber');
 
+// BrowserSync.
+gulp.task('browser-sync', function() {
+    //watch files
+    var files = [
+        'css/style.css',
+        'js/*js',
+        'img/**/*',
+        'templates/*.twig'
+    ];
+
+    //initialize Browsersync
+    browserSync.init(files, {
+        //Browsersync with a php server
+        proxy: "drupal.loc",
+        notify: true
+    });
+});
 
 // Automatically install npm and bower packages found in package.json and bower.json.
 gulp.task('install-all', function () {
@@ -97,24 +114,6 @@ gulp.task('js', function () {
 gulp.task('drush', shell.task([
   'drush cache-clear theme-registry'
 ]));
- 
-// BrowserSync.
-gulp.task('browser-sync', function() {
-    //watch files
-    var files = [
-    'css/style.css',
-    'js/*js',
-    'img/**/*',
-    'templates/*.twig'
-    ];
- 
-    //initialize Browsersync
-    browserSync.init(files, {
-    //Browsersync with a php server
-    proxy: "drupal.loc",
-    notify: true
-    });
-});
 
 // Autoprefixer.
 gulp.task('autoprefixer', function () {

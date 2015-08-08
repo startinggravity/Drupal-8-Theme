@@ -25,3 +25,4 @@ and data (pre)processing of the output here as needed.<br />
 10. Edit your_theme.libraries.yml as needed.<br />
 11. <code>node install</code><br />
 12. <code>gulp install-all</code><br />
+13. Edit line 26 of gulpfile.js, replacing "drupal.loc" with the domain of your local site.<br />
