@@ -35,7 +35,7 @@ and data (pre)processing of the output here as needed.
 
 0. `mv drupal8_theme.libraries.yml your_theme.libraries.yml`
 
-0. Edit your_theme.libraries.yml as needed.
+0. Edit may not be needed to your_theme.libraries.yml unless you choose to add other CSS and JS files. You can find more information on the use of the libraries.yml file here: https://www.drupal.org/developing/api/8/assets.
 
 0. `node update`
 
