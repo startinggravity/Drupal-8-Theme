@@ -22,7 +22,7 @@ Some steps presume you have already installed Node.js on your system. If you hav
 
 0. `mv drupal8_theme.info.yml your_theme.info.yml`
 
-0. Edit your_theme.info.yml to reflect your theme's name and other details. See https://www.drupal.org/node/2349827.
+0. Edit your_theme.info.yml to reflect your theme's name and other details. Make sure you change the path under "# Locate files" to reflect your theme directory's name. See also https://www.drupal.org/node/2349827.
 
 0. `mv drupal8_theme.theme your_theme.theme`
 
