@@ -1,18 +1,18 @@
-test_theme.singlecolumn:
+drupal8_theme.singlecolumn:
   label: single colum
   mediaQuery: '(min-width: 0px)'
   weight: 2
   multipliers:
     - 1x
     - 2x
-test_theme.twocolumn:
+drupal8_theme.twocolumn:
   label: two column
   mediaQuery: 'all and (min-width: 560px) and (max-width: 860px)'
   weight: 1
   multipliers:
     - 1x
     - 2x
-test_theme.threecolumn:
+drupal8_theme.threecolumn:
   label: three column
   mediaQuery: 'all and (min-width: 851px)'
   weight: 0
