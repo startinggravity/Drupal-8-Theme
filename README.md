@@ -31,7 +31,7 @@ and data (pre)processing of the output here as needed.
 
 0. `mv drupal8_theme.breakpoints.yml your_theme.breakpoints.yml`
 
-0. Edit your_theme.breakpoints.yml as needed.
+0. Edit your_theme.breakpoints.yml by changing 'drupal8_theme' to 'your_theme'. This appears in three places. You should also remove, add or edit breakpoints as needed for your theme layout.
 
 0. `mv drupal8_theme.libraries.yml your_theme.libraries.yml`
 
