@@ -39,10 +39,10 @@ and data (pre)processing of the output here as needed.
 
 0. Edit may not be needed to your_theme.libraries.yml unless you choose to add other CSS and JS files. You can find more information on the use of the libraries.yml file here: https://www.drupal.org/developing/api/8/assets.
 
-0. `npm update`
+0. `npm install`
 
 0. `gulp install-all`
 
 0. Edit line 26 of gulpfile.js, replacing "drupal.loc" with the domain of your local site.
 
-Note: Running `node update` (step 11) and `gulp install-all` (step 12) will add several files in directories called node_modules and bower_components. The .gitignore file your theme will prevent these files from being added to your repo. This is intentional because the files are only needed for development. Additional developers on a team using the theme you have set up will also need to navigate to the theme and run the commands in steps 11 and 12.
+Note: Running `npm install` (step 11) and `gulp install-all` (step 12) will add several files in directories called node_modules and bower_components. The .gitignore file your theme will prevent these files from being added to your repo. This is intentional because the files are only needed for development. Additional developers on a team using the theme you have set up will also need to navigate to the theme and run the commands in steps 11 and 12.
