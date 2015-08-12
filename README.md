@@ -10,13 +10,19 @@ Includes:
 * Phantomas
 * And much more theme development goodness
 
-## Instructions
+## Pre-installation Notes
 
-The installation steps below presume you have already installed Node.js on your system. It should be at least version v0.10.32. If you have not installed it before download and install it from this page: https://nodejs.org. If you are unsure you have installed it or are unsure of the version, you can check that by running `node -v` from the command line.
+The installation steps below presume you have already installed Node.js, npm and Composer on your system. If you are certain you do, you can skip down to the installation instructions. Otherwise, follow the information here.
 
-You should next make sure npm is installed. You can check that with `npm -v`. If you get an error indicating it's not installed, you can easily install using the command `sudo npm install npm -g`.
+Node.js should be at least version v0.10.32. If you have not installed it before, download and install it from this page: https://nodejs.org. If you are unsure you have installed it or are unsure of the version, you can check that by running `node -v` from the command line.
 
-Once you have Node.js and npm installed, install your theme with the following steps. Where you see `text like this`, enter the text from a command line terminal. Where you see `your_theme` you should replace that text with the name you have given to your theme (without spaces).
+You should next make sure npm is installed. You can check that with `npm -v`. If you get an error indicating it's not installed, you can easily install it using the command `sudo npm install npm -g`.
+
+Using PatternLab requires Composer to set up the files. You can confirm it is installed with the command `composer --version`. If it's not installed, the global version is recommended and instructions for that can be found here: https://getcomposer.org/doc/00-intro.md#globally.
+
+Once you are sure you have Node.js, npm and Composer installed, install your theme with the following steps. Where you see `text like this`, enter the text from a command line terminal. Where you see `your_theme` you should replace that text with the name you have given to your theme (without spaces).
+
+## Installation Instructions
 
 0. `git clone https://github.com/startinggravity/Drupal-8-Theme.git your_theme`
 
@@ -45,7 +51,13 @@ and data (pre)processing of the output here as needed.
 
 0. Edit line 26 of gulpfile.js, replacing "drupal.loc" with the domain of your local site.
 
-Note: Running `npm install` (step 11) and `gulp install-all` (step 12) will add several files in directories called node_modules and bower_components. The .gitignore file your theme will prevent these files from being added to your repo. This is intentional because the files are only needed for development. Additional developers on a team using the theme you have set up will also need to navigate to the theme and run the commands in steps 11 and 12.
+0. `php patternlab/core/builder.php -g`
+
+## Post-installation Notes
+
+Running `npm install` (step 11) and `gulp install-all` (step 12) will add several files in directories called node_modules and bower_components. The .gitignore file in your theme will prevent these files from being added to your repo. This is intentional because the files are only needed for development. 
+
+If you are adding developers on a team who are editing the theme, after they have cloned your site's repo they will need to navigate to the theme directory and run the commands in steps 11, 12 and 13.
 
 ## Using PatternLab
 
