@@ -1,5 +1,7 @@
 # Drupal 8 Theme
 
+(TODO: This is a work in progress. There is much that needs to be finished here.)
+
 Includes:
 * [Gulp](http://gulpjs.com) for task-running
 * [Sass](http://sass-lang.com) for pre-processing CSS
@@ -83,7 +85,7 @@ Rename the breakpoints.yml file.
 mv drupal8_theme.breakpoints.yml your_theme.breakpoints.yml
 ```
 
-Edit your_theme.breakpoints.yml by changing 'drupal8_theme' to 'your_theme'. This appears in three places. You should also remove, add or edit breakpoints as needed for your theme layout. At least for now, this will get you started.
+Edit `your_theme.breakpoints.yml` by changing `drupal8_theme` to `your_theme`. This appears in three places. You should also remove, add or edit breakpoints as needed for your theme layout. At least for now, this will get you started.
 
 Rename the libraries.yml file.
 
@@ -93,7 +95,7 @@ mv drupal8_theme.libraries.yml your_theme.libraries.yml
 
 Editing may not be needed in your_theme.libraries.yml, or at least not right away. This is where you can add other CSS and JS files. You can find more information on the use of the libraries.yml file here: https://www.drupal.org/developing/api/8/assets.
 
-Edit line 26 of gulpfile.js, replacing "drupal.loc" with the domain of your local site.
+Edit line 1 of `gulpfile.js`, replacing `drupal.loc` with the domain of your local site.
 
 Now install all of the Node.js modules we need.
 
