@@ -49,65 +49,65 @@ Once you are sure you have Node.js, npm and Gulp installed, you are ready to ins
 
 ## Installation Instructions
 
-0. Navigate in your Drupal installation to themes (`cd themes`). If you wish, you can add a new directory for your custom themes (`mkdir custom && cd custom`). Then install the theme files using: 
+Navigate in your Drupal installation to themes (`cd themes`). If you wish, you can add a new directory for your custom themes (`mkdir custom && cd custom`). Then install the theme files using: 
 
 ```bash
 git clone https://github.com/startinggravity/Drupal-8-Theme.git your_theme
 ```
 
-0. Change directories to where your put your theme.
+Change directories to where your put your theme.
 
 ```bash
 cd your_theme
 ```
 
-0. Rename the theme info.yml file.
+Rename the theme info.yml file.
 
 ```bash 
 mv drupal8_theme.info.yml your_theme.info.yml
 ```
 
-0. Edit your_theme.info.yml to reflect your theme's name and other details. Make sure you change the path under "# Locate files" to reflect your theme directory's name. See also https://www.drupal.org/node/2349827.
+Edit your_theme.info.yml to reflect your theme's name and other details. Make sure you change the path under "# Locate files" to reflect your theme directory's name. See also https://www.drupal.org/node/2349827.
 
-0. Rename the .theme file.
+Rename the .theme file.
 
 ```bash
 mv drupal8_theme.theme your_theme.theme
 ```
 
-0. Edit your_theme.theme to reflect your theme's name in the provided preprocess function. Add more conditional logic and data (pre)processing of the output here as needed.
+Edit your_theme.theme to reflect your theme's name in the provided preprocess function. Add more conditional logic and data (pre)processing of the output here as needed.
 
-0. Rename the breakpoints.yml file.
+Rename the breakpoints.yml file.
 
 ```bash
 mv drupal8_theme.breakpoints.yml your_theme.breakpoints.yml
 ```
 
-0. Edit your_theme.breakpoints.yml by changing 'drupal8_theme' to 'your_theme'. This appears in three places. You should also remove, add or edit breakpoints as needed for your theme layout. At least for now, this will get you started.
+Edit your_theme.breakpoints.yml by changing 'drupal8_theme' to 'your_theme'. This appears in three places. You should also remove, add or edit breakpoints as needed for your theme layout. At least for now, this will get you started.
 
-0. Rename the libraries.yml file.
+Rename the libraries.yml file.
 
 ```bash
 mv drupal8_theme.libraries.yml your_theme.libraries.yml
 ```
 
-0. Editing may not be needed in your_theme.libraries.yml, or at least not right away. This is where you can add other CSS and JS files. You can find more information on the use of the libraries.yml file here: https://www.drupal.org/developing/api/8/assets.
+Editing may not be needed in your_theme.libraries.yml, or at least not right away. This is where you can add other CSS and JS files. You can find more information on the use of the libraries.yml file here: https://www.drupal.org/developing/api/8/assets.
 
-0. Edit line 26 of gulpfile.js, replacing "drupal.loc" with the domain of your local site.
+Edit line 26 of gulpfile.js, replacing "drupal.loc" with the domain of your local site.
 
-0. Now install all of the Node.js modules we need.
+Now install all of the Node.js modules we need.
 
 ```bash
 npm install
 ```
 
-0. Then install the Bower modules.
+Then install the Bower modules.
 
 ```bash
 gulp install-all
 ```
 
-0. Finally, set up Pattern Lab.
+Finally, set up Pattern Lab.
 
 ```bash
 gulp generate-pattern-lab
