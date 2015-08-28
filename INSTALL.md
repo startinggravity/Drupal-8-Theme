@@ -2,7 +2,7 @@
 
 Developing this Drupal 8 theme requires several components that are not provided natively by most operating systems. The following instructions presume no previous use of Node.js, NPM, Gulp, Bower and such, and presumes installation on a computer running MacOSX.
 
-If you are certain you have used Node.js, Gulp and Bower before, you can skip these instructions and continue with the information provide on the (README page)[https://github.com/startinggravity/Drupal-8-Theme/blob/master/README.md].
+If you are certain you have used Node.js, Gulp, Bower and Drush before, you can skip these instructions and continue with the information provided on the (README page)[https://github.com/startinggravity/Drupal-8-Theme/blob/master/README.md#installation].
 
 ## Node.js
 
@@ -34,10 +34,28 @@ sudo npm install npm -g
 
 ## Gulp
 
-Finally, we are using Gulp to automate many development steps. It's best to install it globally as well, so do that with:
+We are using Gulp to automate many development steps. It's best to install it globally as well, so do that with:
 
 ```bash
 npm install -g gulp
 ```
 
-Once you are sure you have Node.js, npm and Gulp installed, you are ready to install your theme with the following steps. Where you see `your_theme` you should replace that text with the name you have given to your theme (without spaces).
+## Bower
+
+Bower is another package manager. It's used where we need to manage files not possible with Gulp. Install it globally with:
+
+```bash
+npm install -g bower
+```
+
+## Drush
+
+Finally, you will need Drush. If you are a regular Drupal developer this may already be on your system, but make sure it is version 8, because that is the only version compatible with Drupal 8. To check, run:
+
+```bash
+drush version
+```
+
+If you are not running Drush 8, follow instalation instructions (provided here)[http://www.drush.org/en/master/install/].
+
+Once you are sure you have these packages installed, you are ready to install your theme with the steps provided in the (README page)[https://github.com/startinggravity/Drupal-8-Theme/blob/master/README.md#installation]. 
