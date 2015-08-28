@@ -17,7 +17,7 @@ This repo includes:
 
 The installation steps below presume you have already installed Drush, Node.js and npm on your system. If you have never used those before or are certain if they are available on your system, follow [these installation instructions](https://github.com/startinggravity/Drupal-8-Theme/blob/master/INSTALL.md). Otherwise, you can skip to the installation instructions below.
 
-## [Installation Instructions](#installation)
+## Installation Instructions
 
 We are assuming here you have already installed Drupal 8 and it is running on your development server. To begin installing this theme, navigate to the themes directory (`cd themes`). If you wish, you can add a new directory for your custom themes (`mkdir custom && cd custom`).
 
