@@ -1,6 +1,6 @@
 # Drupal 8 Theme
 
-(TODO: This is a work in progress. There is much that needs to be finished here.)
+This is a work in progress. There is much that needs to be added and finished. (See the [TODO list here](https://github.com/startinggravity/Drupal-8-Theme/blob/master/TODO.md).)
 
 Includes:
 * [Gulp](http://gulpjs.com) for task-running
@@ -12,8 +12,6 @@ Includes:
 * And much more theme development goodness
 
 ## Pre-installation Notes
-
-(TODO: Make a Yeoman generator to simplify all of this.)
 
 The installation steps below presume you have already installed Node.js and npm on your system. If you are certain you do, you can skip down to the installation instructions. Otherwise, follow the information here.
 
