@@ -2,7 +2,7 @@
 
 Developing this Drupal 8 theme requires several components that are not provided natively by most operating systems. The following instructions presume no previous use of Node.js, NPM, Gulp, Bower and such, and presumes installation on a computer running MacOSX.
 
-If you are certain you have used Node.js, Gulp, Bower and Drush before, you can skip these instructions and continue with the information provided on the (README page)[https://github.com/startinggravity/Drupal-8-Theme/blob/master/README.md#installation].
+If you are certain you have used Node.js, Gulp, Bower and Drush before, you can skip these instructions and continue with the information provided on the [README page](https://github.com/startinggravity/Drupal-8-Theme/blob/master/README.md#installation).
 
 ## Node.js
 
@@ -56,6 +56,6 @@ Finally, you will need Drush. If you are a regular Drupal developer this may alr
 drush version
 ```
 
-If you are not running Drush 8, follow instalation instructions (provided here)[http://www.drush.org/en/master/install/].
+If you are not running Drush 8, follow instalation instructions [provided here](http://www.drush.org/en/master/install/).
 
-Once you are sure you have these packages installed, you are ready to install your theme with the steps provided in the (README page)[https://github.com/startinggravity/Drupal-8-Theme/blob/master/README.md#installation]. 
+Once you are sure you have these packages installed, you are ready to install your theme with the steps provided in the [README page](https://github.com/startinggravity/Drupal-8-Theme/blob/master/README.md#installation). 
