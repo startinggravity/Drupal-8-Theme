@@ -1,19 +1,21 @@
 # Drupal 8 Theme
 
-This is a work in progress. There is much that needs to be added and finished. (See the [TODO list here](https://github.com/startinggravity/Drupal-8-Theme/blob/master/TODO.md).)
+The files contained in this repo provide a starting point for developing a Drupal 8 theme. Consider it a work in progress. There is much that needs to be added and finished. (See the [TODO list here](https://github.com/startinggravity/Drupal-8-Theme/blob/master/TODO.md).)
 
-Includes:
+There are many concepts at play here to allow you to create a custom theme using tools for performance, testing, and fast development.
+
+This repo includes:
 * [Gulp](http://gulpjs.com) for task-running
-* [Sass](http://sass-lang.com) for pre-processing CSS
-* [Browsersync](http://www.browsersync.io) for simultaneous testing on multiple browsers
-* [Imagemin](https://www.npmjs.com/package/gulp-imagemin) for minifying PNG, JPEG, GIF and SVG images on the fly
+* [Sass](http://sass-lang.com) for pre-processing CSS, using Libsass so we don't get bogged down with Ruby
+* [Browser Sync](http://www.browsersync.io) for simultaneous testing on multiple browsers
+* [Image Optimization](https://www.npmjs.com/package/gulp-image-optimization) for minifying PNG, JPEG, GIF and SVG images on the fly
 * [Singularity Grid System](https://github.com/at-import/Singularity) for a responsive grid framework
 * [Pattern Lab](http://patternlab.io) for designing in the browser and creating a living styleguide
 * And much more theme development goodness
 
 ## Pre-installation Notes
 
-The installation steps below presume you have already installed Node.js and npm on your system. If you have never used those before or are certain if they are available on your system, follow (these installation instructions)[https://github.com/startinggravity/Drupal-8-Theme/blob/master/INSTALL.md]. Otherwise, you can skip to the installation instructions below.
+The installation steps below presume you have already installed Drush, Node.js and npm on your system. If you have never used those before or are certain if they are available on your system, follow (these installation instructions)[https://github.com/startinggravity/Drupal-8-Theme/blob/master/INSTALL.md]. Otherwise, you can skip to the installation instructions below.
 
 ## Installation Instructions
 
