@@ -135,6 +135,8 @@ The development of a theme using these files and configuation would normally pro
 
 1. Edit Sass files to provide layout and styling. These files are replicated in Pattern Lab to largely eliminate redundant coding.
 
-1. Gulp commands provide automation of the development process. Under normal circumstances, the default command `gulp` is all that is needed to watch for file changes, process Sass files into CSS, trigger Drush to clear cache, and refresh the browser.
+1. Gulp commands provide automation of the development process. During development, use the command `gulp build-dev` to start up the full task-running process. Gulp will watch for file changes, process Sass files into CSS, trigger Drush to clear cache when Drupal template files are changed, and refresh the browser.
+
+1. After `gulp build-dev` begins the process of firing up Pattern Lab and watching for file changes it will lauch the site in your default browser. You will find the site at "http://localhost:3000." If the site fails to load and you see a message saying "The website encountered an unexpected error. Please try again later," don't panic. Try refreshing the browser manually. This problem sometimes occurs when the build process gets out of sync.
 
 1. Pattern Lab can be found at "http://your-site/themes/your_theme/pattern-lab" and "http://localhost:3000/themes/pattern-lab/pattern-lab/public/" (when Browsersync is running), or else "http://your-site/themes/custom/your_theme/pattern-lab" and "http://localhost:3000/themes/custom/pattern-lab/pattern-lab/public/" if you chose to place your theme inside a subdirectory "custom" in /themes.
