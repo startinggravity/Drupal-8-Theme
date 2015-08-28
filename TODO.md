@@ -1,4 +1,4 @@
-# TODO list and known issues
+# TODO list 
 
 This theme is a work in progress. Here are some things being worked on or planned for.
 
