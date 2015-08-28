@@ -13,43 +13,15 @@ Includes:
 
 ## Pre-installation Notes
 
-The installation steps below presume you have already installed Node.js and npm on your system. If you are certain you do, you can skip down to the installation instructions. Otherwise, follow the information here.
-
-Node.js should be at least version v0.10.32. If you have not installed it before, download and install it from this page: https://nodejs.org, or if you are using a Mac and Homebrew, you can install node using: 
-
-```bash
-brew install node
-```
-
-If you are unsure if you have installed it or are unsure of the version, you can check that by running from the command line:
-
-```bash
-node -v
-```
-
-You should next make sure npm is installed. You can check that with: 
-
-```bash 
-npm -v
-```
-
-If you get an error indicating it's not installed, you can easily install it using the command: 
-
-```bash
-sudo npm install npm -g
-```
-
-Finally, we are using Gulp to automate many development steps. It's best to install it globally as well, so do that with:
-
-```bash
-npm install -g gulp
-```
-
-Once you are sure you have Node.js, npm and Gulp installed, you are ready to install your theme with the following steps. Where you see `your_theme` you should replace that text with the name you have given to your theme (without spaces).
+The installation steps below presume you have already installed Node.js and npm on your system. If you have never used those before or are certain if they are available on your system, follow (these installation instructions)[https://github.com/startinggravity/Drupal-8-Theme/blob/master/INSTALL.md]. Otherwise, you can skip to the installation instructions below.
 
 ## Installation Instructions
 
-Navigate in your Drupal installation to themes (`cd themes`). If you wish, you can add a new directory for your custom themes (`mkdir custom && cd custom`). Then install the theme files using: 
+We are assuming here you have already installed Drupal 8 and it is running on your development server. To begin installing this theme, navigate to the themes directory (`cd themes`). If you wish, you can add a new directory for your custom themes (`mkdir custom && cd custom`).
+
+Where you see in these instructions `your_theme` you should substitute the name of your theme, using all lower case and with no spaces. Use underscores to separate words.
+
+Now install the theme files using: 
 
 ```bash
 git clone https://github.com/startinggravity/Drupal-8-Theme.git your_theme
@@ -121,20 +93,22 @@ If you are adding developers on a team who are editing the theme, after they hav
 
 ## Using PatternLab
 
-To set patterns, follow instructions provided here: https://github.com/pattern-lab/patternengine-php-twig/blob/master/README.md
+To set patterns, follow instructions provided here: https://github.com/pattern-lab/patternengine-php-twig/blob/master/README.md.
 
-To provide SCSS files to Pattern Lab, edit the Drupal theme Sass files. They will be automatically imported to Pattern Lab when you run `gulp`, `gulp generate-pattern-lab`, or `gulp sass-pattern-lab`.
+The CSS files for Pattern Lab patterns are provided by your Drupal theme. This allows you to write once, yet use the same styling in the theme and in Pattern Lab. The CSS is provided by Sass (SCSS) and is automatically rendered using (Libsass)[http://sass-lang.com/libsass].
 
 ## For development
 
 The development of a theme using these files and configuation would normally proceed as follows:
 
-1. Provide pattern files in Pattern Lab to match markup in Drupal theme template files. The pattern lab files are based on Twig, the same theming engine used in Drupal 8.
+1. *Design in the browser using pattern files in Pattern Lab.* Ideally, you are creating patterns using markup that matches your Drupal markup so that your CSS provides the exact same styling. In the solution provided here, the Pattern Lab files are based on Twig, the same theming engine used in Drupal 8.
 
-1. Edit Sass files to provide layout and styling. These files are replicated in Pattern Lab to largely eliminate redundant coding.
+1. *Edit Sass files to provide layout and styling.* As noted before Sass files are written once and used in Pattern Lab to largely eliminate redundant coding. The Sass files reside in your theme directory tree.
 
-1. Gulp commands provide automation of the development process. During development, use the command `gulp build-dev` to start up the full task-running process. Gulp will watch for file changes, process Sass files into CSS, trigger Drush to clear cache when Drupal template files are changed, and refresh the browser.
+1. *Use Gulp commands to automate the development process.* Before you beging writing files, use the command `gulp build-dev` to start up the full task-running process. Gulp will watch for file changes, process Sass files into CSS, trigger Drush to clear cache when Drupal template files are changed, and refresh the browser.
 
-1. After `gulp build-dev` begins the process of firing up Pattern Lab and watching for file changes it will lauch the site in your default browser. You will find the site at "http://localhost:3000." If the site fails to load and you see a message saying "The website encountered an unexpected error. Please try again later," don't panic. Try refreshing the browser manually. This problem sometimes occurs when the build process gets out of sync.
+1. *By using `gulp build-dev`, your Drupal site and Pattern Lab will automatically launch in your default browser with Browser Sync. You will find the site at "http://localhost:3000." If the site fails to load and you see a message saying "The website encountered an unexpected error. Please try again later," don't panic. Try refreshing the browser manually. This problem sometimes occurs when the build process gets out of sync.
 
-1. Pattern Lab can be found at "http://your-site/themes/your_theme/pattern-lab" and "http://localhost:3000/themes/pattern-lab/pattern-lab/public/" (when Browsersync is running), or else "http://your-site/themes/custom/your_theme/pattern-lab" and "http://localhost:3000/themes/custom/pattern-lab/pattern-lab/public/" if you chose to place your theme inside a subdirectory "custom" in /themes.
+1. *Pattern Lab resides within the theme.* The pages are always available for viewing from any server running your site. If you do not wish to have these pages running on a production server you should exclude them before you commit to production. To view pattern pages, go to "http://your-site/themes/your_theme/pattern-lab" or "http://localhost:3000/themes/pattern-lab/pattern-lab/public/" (when Browser Sync is running), or else "http://your-site/themes/custom/your_theme/pattern-lab" and "http://localhost:3000/themes/custom/pattern-lab/pattern-lab/public/" if you placed your theme inside a "custom" subdirectory of /themes.
+
+1. *Gulp will watch for changes in your files.* Not only will your Sass files automatically process into CSS, but any changes to your Pattern Lab patterns and Drupal theme template files will trigger appropriate changes as well. This includes refreshing Browser Sync on each change so that the changes appear right away in your browser.
