@@ -15,9 +15,9 @@ This repo includes:
 
 ## Pre-installation Notes
 
-The installation steps below presume you have already installed Drush, Node.js and npm on your system. If you have never used those before or are certain if they are available on your system, follow (these installation instructions)[https://github.com/startinggravity/Drupal-8-Theme/blob/master/INSTALL.md]. Otherwise, you can skip to the installation instructions below.
+The installation steps below presume you have already installed Drush, Node.js and npm on your system. If you have never used those before or are certain if they are available on your system, follow [these installation instructions](https://github.com/startinggravity/Drupal-8-Theme/blob/master/INSTALL.md). Otherwise, you can skip to the installation instructions below.
 
-## Installation Instructions
+## [Installation Instructions](#installation)
 
 We are assuming here you have already installed Drupal 8 and it is running on your development server. To begin installing this theme, navigate to the themes directory (`cd themes`). If you wish, you can add a new directory for your custom themes (`mkdir custom && cd custom`).
 
@@ -41,7 +41,7 @@ Rename the theme info.yml file.
 mv drupal8_theme.info.yml your_theme.info.yml
 ```
 
-Edit your_theme.info.yml to reflect your theme's name and other details. Make sure you change the path under "# Locate files" to reflect your theme directory's name. See also https://www.drupal.org/node/2349827.
+Edit your_theme.info.yml to reflect your theme's name and other details. Make sure you change the path under "# Locate files" to reflect your theme directory's name. See also "[Defining a theme with an .info.yml file](https://www.drupal.org/node/2349827)".
 
 Rename the .theme file.
 
@@ -65,7 +65,7 @@ Rename the libraries.yml file.
 mv drupal8_theme.libraries.yml your_theme.libraries.yml
 ```
 
-Editing may not be needed in your_theme.libraries.yml, or at least not right away. This is where you can add other CSS and JS files. You can find more information on the use of the libraries.yml file here: https://www.drupal.org/developing/api/8/assets.
+Editing may not be needed in your_theme.libraries.yml, or at least not right away. This is where you can add other CSS and JS files. You can find more information on the use of the libraries.yml file [here] (https://www.drupal.org/developing/api/8/assets).
 
 Edit line 1 of `gulpfile.js`, replacing `drupal.loc` with the domain of your local site.
 
@@ -95,9 +95,9 @@ If you are adding developers on a team who are editing the theme, after they hav
 
 ## Using PatternLab
 
-To set patterns, follow instructions provided here: https://github.com/pattern-lab/patternengine-php-twig/blob/master/README.md.
+To set patterns, follow instructions provided [here](https://github.com/pattern-lab/patternengine-php-twig/blob/master/README.md).
 
-The CSS files for Pattern Lab patterns are provided by your Drupal theme. This allows you to write once, yet use the same styling in the theme and in Pattern Lab. The CSS is provided by Sass (SCSS) and is automatically rendered using (Libsass)[http://sass-lang.com/libsass].
+The CSS files for Pattern Lab patterns are provided by your Drupal theme. This allows you to write once, yet use the same styling in the theme and in Pattern Lab. The CSS is provided by Sass (SCSS) and is automatically rendered using [Libsass](http://sass-lang.com/libsass).
 
 ## For development
 
