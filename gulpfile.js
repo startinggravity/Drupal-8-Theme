@@ -1,28 +1,124 @@
-var gulp         = require("gulp");
-var sass         = require("gulp-sass");
-var filter       = require('gulp-filter');
-var sourcemaps   = require('gulp-sourcemaps');
-var browserSync  = require("browser-sync");
-var reload       = browserSync.reload;
-var shell        = require('gulp-shell');
-var autoprefixer = require('gulp-autoprefixer');
-var install      = require("gulp-install");
-var plumber      = require('gulp-plumber');
+var domain          = 'your-site.tld';  // Set this to your local development domain.
 
-// BrowserSync.
+// Gulp and node.
+var gulp            = require('gulp');
+var run             = require('gulp-run');
+var install         = require('gulp-install');
+var plumber         = require('gulp-plumber');
+var watch           = require('gulp-watch');
+var gulpFilter      = require('gulp-filter');
+var runSequence     = require('run-sequence');
+var gutil           = require('gulp-util');
+var notify          = require('gulp-notify');
+
+// Basic workflow.
+var sass            = require('gulp-sass');
+var sourcemaps      = require('gulp-sourcemaps');
+var autoprefixer    = require('gulp-autoprefixer');
+var browserSync     = require('browser-sync');
+var reload          = browserSync.reload;
+var bs              = require('browser-sync').create();
+
+// Performance.
+var postcss         = require('gulp-postcss');
+var imageop         = require('gulp-image-optimization');
+var svgmin          = require('gulp-svgmin');
+
+// Error handling.
+// Lifted directly from https://github.com/mikaelbr/gulp-notify/issues/81#issuecomment-100422179.
+var reportError = function (error) {
+    var lineNumber = (error.lineNumber) ? 'LINE ' + error.lineNumber + ' -- ' : '';
+
+    notify({
+        title: 'Task Failed [' + error.plugin + ']',
+        message: lineNumber + 'See console.',
+        sound: 'Sosumi' // See: https://github.com/mikaelbr/node-notifier#all-notification-options-with-their-defaults
+    }).write(error);
+
+    gutil.beep(); // Beep 'sosumi' again
+
+    // Inspect the error object
+    //console.log(error);
+
+    // Easy error reporting
+    //console.log(error.toString());
+
+    // Pretty error reporting
+    var report = '';
+    var chalk = gutil.colors.white.bgRed;
+
+    report += chalk('TASK:') + ' [' + error.plugin + ']\n';
+    report += chalk('PROB:') + ' ' + error.message + '\n';
+    if (error.lineNumber) { report += chalk('LINE:') + ' ' + error.lineNumber + '\n'; }
+    if (error.fileName)   { report += chalk('FILE:') + ' ' + error.fileName + '\n'; }
+    console.error(report);
+
+    // Prevent the 'watch' task from stopping
+    this.emit('end');
+};
+
+// Paths.
+var paths = {
+    drupalStyle: {
+        src:        'sass/',
+        dest:       'css/'
+    },
+    drupalScripts: {
+        dest:       'js/'
+    },
+    drupalImages: {
+        src:        'img-src/',
+        dest:       'images/'
+    },
+    drupalTemplates: {
+        dest:       'templates/'
+    },
+    plStyle: {
+        src:        'pattern-lab/source/css/',
+        dest:       'pattern-lab/source/css/'
+    },
+    plScripts: {
+        src:        'pattern-lab/source/js/'
+    },
+    plPatterns: {
+        src:        'pattern-lab/source/_patterns/'
+    },
+    plComponents: {
+        src:        'pattern-lab/source/_twig-components/'
+    }
+};
+
+// Files with paths.
+var files = {
+    drupalStyleDest:    paths.drupalStyle.dest + 'style.css',
+    drupalStyleSrc:     paths.drupalStyle.src + '**/*.scss',
+    drupalScriptsDest:  paths.drupalScripts.dest + '*.js',
+    drupalTemplateDest: paths.drupalTemplates.dest + '**/*.twig',
+    plStyleSrc:         paths.plStyle.src + 'style.scss',
+    plStyleDest:        paths.plStyle.dest + 'style.css',
+    imagesSrc:          paths.drupalImages.src + '*.*',
+    imagesDest:         paths.drupalImages.dest  + '*.*',
+    patterns:           paths.plPatterns.src + '**/*.twig',
+    twigComponents:     paths.plComponents.src + '**/*.twig'
+};
+
+// Files to watch.
+var watchfiles = [
+    files.drupalScriptsDest,
+    files.drupalStyleDest,
+    files.drupalStyleSrc,
+    files.imagesSrc,
+    files.imagesDest,
+    files.drupalTemplateDest,
+    files.plStyleSrc,
+    files.plStyleDest
+];
+
+// Fire up Browser Sync.
 gulp.task('browser-sync', function() {
-    //watch files
-    var files = [
-        'css/style.css',
-        'js/*js',
-        'img/**/*',
-        'templates/*.twig'
-    ];
-
-    //initialize Browsersync
-    browserSync.init(files, {
-        //Browsersync with a php server
-        proxy: "drupal.loc",
+    browserSync.init( {
+        // Browsersync with a php server.
+        proxy: domain,
         notify: true
     });
 });
@@ -35,103 +131,133 @@ gulp.task('install-all', function () {
  
 // Drupal theme Sass task.
 gulp.task('sass-drupal', function () {
-    return gulp.src('scss/**/*.scss')
-        .pipe(sourcemaps.init())
-            .pipe(autoprefixer())
-            .pipe(sass({
-                //outputStyle: 'compressed',
-                outputStyle: 'nested',
-                precision: 10,
-                onError: function (err) {
-                    notify().write(err);
-                }
-            }))
-        .pipe(sourcemaps.write())
-        .pipe(gulp.dest('css'))
-        .pipe(filter('css**/*.css')) // Filtering stream to only css files
-        .pipe(browserSync.reload({stream:true}));
-});
-
-gulp.task('sass', function() {
-    return gulp.src('sass/**/*.scss')
-        .pipe(sass({
-            outputStyle: 'nested',
-            onSuccess: function(css) {
-                var dest = css.stats.entry.split('/');
-                log(c.green('sass'), 'compiled to', dest[dest.length - 1]);
-            },
-            onError: function(err, res) {
-                log(c.red('Sass failed to compile'));
-                log(c.red('> ') + err.file.split('/')[err.file.split('/').length - 1] + ' ' + c.underline('line ' + err.line) + ': ' + err.message);
-            }
+    return gulp.src(files.drupalStyleSrc)
+        .pipe(plumber({
+            errorHandler: reportError
         }))
-        .pipe(autoprefixer("last 2 versions", "> 1%"))
-        .pipe(gulp.dest('css'));
-});
- 
-// Process JS files in Drupal and return the stream.
-gulp.task('js-drupal', function () {
-    return gulp.src('js/*js')
-        .pipe(gulp.dest('js'));
-});
-
-// PatternLab Sass task.
-gulp.task('sass-patternlab', function () {
-    return gulp.src('patternlab-twig/scss/**/*.scss')
-        .pipe(sourcemaps.init())
-        .pipe(autoprefixer())
         .pipe(sass({
             //outputStyle: 'compressed',
             outputStyle: 'nested',
-            precision: 10,
-            onError: function (err) {
-                notify().write(err);
-            }
+            precision: 10
         }))
-        .pipe(sourcemaps.write())
-        .pipe(gulp.dest('patternlab-twig/css'))
-        .pipe(filter('patternlab-twig/scss**/*.css')) // Filtering stream to only css files
-        .pipe(browserSync.reload({stream:true}));
-});
-
-// Update PatternLab pages.
-gulp.task('generate-patternlab', shell.task([
-  'php patternlab-twig/core/console --generate'
-]));
-
-// Sync PatternLab Sass with Drupal Sass.
-gulp.task('sync-sass', shell.task([
-    'rsync -r patternlab-twig/sass/* sass/'
-]));
-
-// process JS files and return the stream.
-gulp.task('js', function () {
-    return gulp.src('js/*js')
-        .pipe(gulp.dest('js'));
+        .on('error', reportError)
+        .pipe(gulp.dest(paths.drupalStyle.dest))
+        .pipe(gulpFilter(files.drupalStyleDest))
 });
  
-// run drush to clear the theme registry.
-gulp.task('drush', shell.task([
-  'drush cache-clear theme-registry'
-]));
+// Sync JS files in Drupal with Pattern Lab. If new files are added, you will need to edit
+// pattern-lab/source/_meta/_00-head.twig or pattern-lab/source/_meta/_01-footer.twig
+gulp.task('rsync-js', function () {
+    return gulp.src(files.drupalScriptsDest)
+        .pipe(run('rsync -r js/* pattern-lab/source/js/'))
+});
+
+// Process Pattern Lab patterns.
+gulp.task('pattern-lab-patterns', function () {
+    return gulp.src(files.patterns)
+        .pipe(watch(files.patterns))
+        .pipe(run('php pattern-lab/core/console --generate'))
+});
+
+// Pattern Lab Sass task.
+// This isn't necessary under regular circumstances and is not currently used.
+gulp.task('sass-pattern-lab', function () {
+    return gulp.src(files.drupalStyleSrc)
+        .pipe(plumber({
+            errorHandler: reportError
+        }))
+        .pipe(sass({
+            //outputStyle: 'compressed',
+            outputStyle: 'nested',
+            precision: 10
+        }))
+        .on('error', reportError)
+        .pipe(gulp.dest(paths.plStyle.dest))
+        .pipe(gulpFilter(files.plStyleDest))
+});
 
 // Autoprefixer.
 gulp.task('autoprefixer', function () {
-    return gulp.src('src/app.css')
-        .pipe(plumber())
-        .pipe(autoprefixer({
-            browsers: ['last 2 versions'],
-            cascade: false
+    // Prevent reading sourcemaps to autoprefix them or make sourcemaps of sourcemaps
+    var filter = gulpFilter(['*.css', '!*.map']);
+    return gulp.src(files.drupalStyleSrc)
+        .pipe(plumber({
+            errorHandler: reportError
         }))
-        .pipe(gulp.dest('dist'));
+        .pipe(sourcemaps.init())
+        .pipe(sass())
+        .pipe(filter)
+        .pipe(autoprefixer({ browsers: ['last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'], cascade: true }))
+        .pipe(sourcemaps.write('.'))
+        .pipe(filter.restore())
+        .on('error', reportError)
+        .pipe(gulp.dest(paths.drupalStyle.dest))
+});
+
+// Optimize PNG, JPG and GIF images.
+gulp.task('optimize-images', function(cb) {
+    gulp.src(paths.drupalImages.src + '*.{gif,jpg,jpeg,png}').pipe(imageop({
+        optimizationLevel: 5,
+        progressive: true,
+        interlaced: true
+    }))
+    .pipe(gulp.dest(paths.drupalImages.dest)).on('end', cb).on('error', cb);
+});
+
+// Optimize SVG images.
+gulp.task('optimize-images-svg', function(cb) {
+    gulp.src(paths.drupalImages.src + '*.svg')
+        .pipe(svgmin())
+        .pipe(gulp.dest(paths.drupalImages.dest)).on('end', cb).on('error', cb);
 });
 
 // Test.
+// This doesn't do anything right now, but it gets triggered during commits.
 gulp.task('test', function () {
 });
 
-// Default task to be run with `gulp`.
-gulp.task('default', ['sass-drupal', 'js-drupal', 'drush', 'browser-sync'], function () {
-    gulp.watch("scss/**/*.scss", ['sass']);
-    gulp.watch("js/*.js", ['js']);
+// Sass.
+gulp.task('run-sass', ['sass-drupal', 'autoprefixer']);
+
+// Generate Pattern Lab.
+gulp.task('generate-pattern-lab', function () {
+    run('php pattern-lab/core/console --generate').exec()
+});
+
+// Use Drush to clear Drupal cache.
+gulp.task('clear-cache', function () {
+    run('drush cache-rebuild').exec()
+});
+
+// When Drupal template files are updated we need to clear cache and the refresh the browser.
+// We use a command line method of reloading Browser Sync so that we can add a delay before it fires.
+// Otherwise, Browser Sync will fire before the cache is cleared.
+gulp.task('templates-watch', ['clear-cache'], function () {
+    run('sleep 15s && browser-sync reload').exec()
+});
+
+// Watch file changes and trigger Browser Sync.
+gulp.task('reload-bs', ['run-sass'], browserSync.reload);
+
+// The files being watched.
+gulp.task('watch-files', ['run-sass'], function () {
+    // Make browsers reload after tasks are complete.
+    gulp.watch(files.drupalStyleSrc, ['reload-bs']);
+    gulp.watch(files.drupalScriptsDest, ['rsync-js']).on('change', browserSync.reload);
+    gulp.watch(files.imagesSrc, ['optimize-images', 'optimize-images-svg']).on('change', browserSync.reload);
+    gulp.watch(files.drupalTemplateDest, ['templates-watch']);
+    gulp.watch(files.patterns, ['generate-pattern-lab']).on('change', browserSync.reload);
+    gulp.watch(files.twigComponents, ['generate-pattern-lab']).on('change', browserSync.reload);
+});
+
+// Run 'gulp build-dev' during development.
+gulp.task('build-dev', function (callback) {
+    runSequence(
+        'run-sass',
+        'rsync-js',
+        'generate-pattern-lab',
+        'browser-sync',
+        'watch-files',
+        callback
+    );
 });
