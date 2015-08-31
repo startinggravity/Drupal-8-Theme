@@ -64,6 +64,7 @@ var paths = {
         dest:       'css/'
     },
     drupalScripts: {
+        src:        'js-src',
         dest:       'js/'
     },
     drupalImages: {
@@ -92,6 +93,7 @@ var paths = {
 var files = {
     drupalStyleDest:    paths.drupalStyle.dest + 'style.css',
     drupalStyleSrc:     paths.drupalStyle.src + '**/*.scss',
+    drupalScriptsSrc:  paths.drupalScripts.src + '*.js',
     drupalScriptsDest:  paths.drupalScripts.dest + '*.js',
     drupalTemplateDest: paths.drupalTemplates.dest + '**/*.twig',
     plStyleSrc:         paths.plStyle.src + 'style.scss',
@@ -104,6 +106,7 @@ var files = {
 
 // Files to watch.
 var watchfiles = [
+    files.drupalScriptsSrc,
     files.drupalScriptsDest,
     files.drupalStyleDest,
     files.drupalStyleSrc,
