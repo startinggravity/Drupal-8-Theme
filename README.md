@@ -67,7 +67,7 @@ mv drupal8_theme.libraries.yml your_theme.libraries.yml
 
 Editing may not be needed in your_theme.libraries.yml, or at least not right away. This is where you can add other CSS and JS files. You can find more information on the use of the libraries.yml file [here] (https://www.drupal.org/developing/api/8/assets).
 
-Edit line 1 of `gulpfile.js`, replacing `drupal.loc` with the domain of your local site.
+Edit line 1 of `gulpfile.js`, replacing `your-site.tld` with the domain of your local site.
 
 Now install all of the Node.js modules we need.
 
