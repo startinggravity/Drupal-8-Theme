@@ -1,0 +1,21 @@
+//////////////////////////////////////////
+//
+// Base - Text.
+//
+//////////////////////////////////////////
+
+.description {
+  color: $color-gray;
+  @include font-size(11px);
+}
+
+time {
+  color: $color-gray;
+  @include font($fontOpenSans, 400, italic);
+}
+
+// Remove the h1 display from the home page.
+
+.path-frontpage h1 {
+  @extend %hideText;
+}

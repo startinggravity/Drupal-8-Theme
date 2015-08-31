@@ -1,0 +1,30 @@
+//////////////////////
+//
+// Utilities - Visibility.
+//
+//////////////////////
+
+.element-invisible,
+.visually-hidden {
+  @extend %hideText;
+}
+
+// This is just for Pattern Lab.
+
+@media (max-width: 400px) {
+  .hide-small {
+    display: none;
+  }
+}
+
+@media (min-width: 400px) and (max-width: 900px) {
+  .hide-med {
+    display: none;
+  }
+}
+
+@media (min-width: 900px) {
+  .hide-large {
+    display: none;
+  }
+}

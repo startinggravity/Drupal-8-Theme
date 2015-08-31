@@ -1,0 +1,85 @@
+//////////////////////////////////////////
+//
+// Utilities - Colors.
+//
+//////////////////////////////////////////
+
+// Color variables.
+// Color names based on http://chir.ag/projects/name-that-color/.
+
+$color-regal-blue: #034176;
+$color-denim: #0a6db2;
+$color-san-marino-blue: #3f669b;
+$color-cinnabar: #ed403f;
+$color-totem-pole: #9d0f03;
+$color-sun: #fdb814;
+$color-wheatfield: #f4efd6;
+$color-mine-shaft: #2b2b2b;
+$color-gray: #818181;
+$color-dusty-gray: #9c9c9c;
+$color-silver: #ccc;
+$color-alto: #dedede;
+$color-mercury: #eee;
+
+// Pattern Lab color chips.
+
+.regal-blue {
+  background-color: $color-regal-blue;
+}
+
+.denim {
+  background-color: $color-denim;
+}
+
+.san-marino-blue {
+  background-color: $color-san-marino-blue;
+}
+
+.cinnabar {
+  background-color: $color-cinnabar;
+}
+
+.totem-pole {
+  background-color: $color-totem-pole;
+}
+
+.sun {
+  background-color: $color-sun;
+}
+
+.wheatfield {
+  background-color: $color-wheatfield;
+}
+
+.mine-shaft {
+  background-color: $color-mine-shaft;
+}
+
+.gray {
+  background-color: $color-gray;
+}
+
+.dusty-gray {
+  background-color: $color-dusty-gray;
+}
+
+.silver {
+  background-color: $color-silver;
+}
+
+.alto {
+  background-color: $color-alto;
+}
+
+.mercury {
+  background-color: $color-mercury;
+}
+
+
+// Reset Pattern Lab color chip size.
+
+@media (min-width: 30em) {
+  .sg-colors li {
+    height: 12em !important;
+  }
+}

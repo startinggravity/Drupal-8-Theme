@@ -1,0 +1,23 @@
+//////////////////////////////
+//
+// Utilities - Postioning.
+//
+//////////////////////////////
+
+// Padding.
+// Example: @include paddingSize(0.7em, 1.2em, 0.9em, 1.2em);
+@mixin paddingSize($paddingTop, $paddingRight, $paddingBottom, $paddingLeft) {
+  padding-top: $paddingTop;
+  padding-right: $paddingRight;
+  padding-bottom: $paddingBottom;
+  padding-left: $paddingLeft;
+}
+
+// Margin.
+// Example: @include marginSize(0.7em, 1.2em, 0.9em, 1.2em);
+@mixin marginSize($marginTop, $marginRight, $marginBottom, $marginLeft) {
+  margin-top: $marginTop;
+  margin-right: $marginRight;
+  margin-bottom: $marginBottom;
+  margin-left: $marginLeft;
+}

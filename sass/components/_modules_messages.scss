@@ -1,0 +1,37 @@
+//////////////////////////////////////////
+//
+// Modules - Messages.
+//
+//////////////////////////////////////////
+
+.message {
+  @include paddingSize(0.5em, 0.5em, 0.5em, 0.5em);
+}
+
+.messages--status {
+  background-color: tint(green, 90%);
+  background-image: none;
+  box-shadow: -8px 0 0 green;
+  @include paddingSize(0.4em, 0.4em, 0.4em, 0.4em);
+  @extend %valid;
+}
+
+.messages--error {
+  background-color: tint(red, 90%);
+  background-image: none;
+  box-shadow: -8px 0 0 red;
+  @include paddingSize(0.4em, 0.4em, 0.4em, 0.4em);
+  @extend %alert;
+}
+
+.messages--warning {
+  background-color: tint(yellow, 90%);
+  background-image: none;
+  box-shadow: -8px 0 0 orange;
+  @include paddingSize(0.4em, 0.4em, 0.4em, 0.4em);
+  @extend %info;
+}
+
+div[role=alert] {
+  display: inline-block;
+}

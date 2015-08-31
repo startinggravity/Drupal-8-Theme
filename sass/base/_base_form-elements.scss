@@ -1,0 +1,63 @@
+//////////////////////////////////////////
+//
+// Base - Form Elements.
+//
+//////////////////////////////////////////
+
+// Input, label.
+
+label {
+  vertical-align: middle;
+  @include marginSize(0, 0.3em, 0, 0);
+  @include font($fontOpenSans, 700);
+}
+
+// Input, field.
+
+input,
+textarea,
+fieldset {
+  border: 1px solid $color-silver;
+  @include marginSize(0.3em, 0, 0.3em, 0);
+  @include paddingSize(0.1em, 0.2em, 0.1em, 0.2em);
+  @include font($fontOpenSans, 400);
+  @include font-size(12px);
+}
+
+input.form-radio {
+  @include marginSize(0.3em, 0.3em, 0.3em, 0);
+}
+
+// Input, required.
+
+.form-required:after {
+  content: '';
+  vertical-align: super;
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-image: url(/core/misc/icons/ee0000/required.svg);
+  background-repeat: no-repeat;
+  background-size: 6px 6px;
+  @include marginSize(0, 0.3em, 0, 0.3em);
+}
+
+// Input, error.
+
+.form-item--error-message {
+  @extend %alert;
+}
+
+.is-error {
+  border: 1px solid red;
+}
+
+// Input, valid.
+
+.valid {
+  @extend %valid;
+}
+
+.is-valid {
+  border: 1px solid green;
+}

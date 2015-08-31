@@ -1,0 +1,57 @@
+//////////////////////////////////////////
+//
+// Utilities - Typography.
+//
+//////////////////////////////////////////
+
+// Fonts.
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800,400italic);
+
+$fontOpenSans: OpenSans, Arial, sans-serif;
+
+$font-normal: 400;
+$font-normal-italic: 400italic;
+$font-light: 300;
+$font-bold: 700;
+$font-extra-bold: 800;
+
+$base-font-size: 12px;
+
+@mixin font-size($font-size){
+  font-size: $font-size;
+  font-size: ($font-size/$base-font-size)*1rem;
+}
+
+// Use only fonts needed.
+// Reference: http://advancedsass.com/articles/dynamically-import-only-used-google-webfonts.html.
+
+$used-fonts: ();
+
+@mixin track-fonts($family, $weight, $style) {
+  // First check if we already knew this one:
+  @if map-has-key($used-fonts, $family) == false {
+    // Font-family isn't in the map yet, so add it.
+    // The key for the nested map is the font name:
+    $used-fonts: map-merge($used-fonts, ($family: ())) !global;
+  }
+
+  // Now check if this weight and style are known,
+  // using Google's "400italic" notation.
+  // If style is "normal", only use the weight:
+  $weight-style: if($style == normal, $weight, #{$weight}#{$style});
+  $font-map: map-get($used-fonts, $family);
+  @if index($font-map, $weight-style) == null {
+    // Weight and style aren't in the map yet, so add it:
+    $variations: append($font-map, $weight-style);
+    $used-fonts: map-merge($used-fonts, ($family: $variations)) !global;
+  }
+}
+
+@mixin font($family, $weight: 400, $style: normal) {
+  // Call our custom function to do the heavy lifting:
+  @include track-fonts($family, $weight, $style);
+  font-family: $family;
+  font-weight: $weight;
+  font-style: $style;
+}

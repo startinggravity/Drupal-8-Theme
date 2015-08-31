@@ -1,0 +1,57 @@
+//////////////////////////////////////////
+//
+// Base - Inline Elements.
+//
+//////////////////////////////////////////
+
+body,
+p {
+  color: $color-mine-shaft;
+  @include font-size(12px);
+  @include font($fontOpenSans, 400);
+}
+
+p em,
+p i,
+blockquote {
+  @include font($fontOpenSans, 400, italic);
+}
+
+p strong {
+  @include font($fontOpenSans, 700);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  @include font($fontOpenSans, 800);
+}
+
+a {
+  color: $color-san-marino-blue;
+  text-decoration: none;
+  @include font($fontOpenSans, 700);
+  &:hover {
+    text-decoration: underline;
+    background-color: $color-wheatfield;
+  }
+  &:visited {
+    text-decoration: underline;
+  }
+}
+
+img {
+  background-color: transparent;
+  display: block;
+}
+
+hr {
+  display: block;
+  height: 2px;
+  border: 0;
+  background: $color-dusty-gray;
+  @include marginSize(1em, 0, 1em, 0);
+  @include paddingSize(0, 0, 0, 0);
+}
