@@ -103,7 +103,7 @@ The CSS files for Pattern Lab patterns are provided by your Drupal theme. This a
 
 The development of a theme using these files and configuation would normally proceed as follows:
 
-1. *Design in the browser using pattern files in Pattern Lab.* Ideally, you are creating patterns using markup that matches your Drupal markup so that your CSS provides the exact same styling. In the solution provided here, the Pattern Lab files are based on Twig, the same theming engine used in Drupal 8.
+1. **Design in the browser using pattern files in Pattern Lab.** Ideally, you are creating patterns using markup that matches your Drupal markup so that your CSS provides the exact same styling. In the solution provided here, the Pattern Lab files are based on Twig, the same theming engine used in Drupal 8.
 
 1. **Edit Sass files to provide layout and styling.** As noted before Sass files are written once and used in Pattern Lab to largely eliminate redundant coding. The Sass files reside in your theme directory tree.
 
@@ -116,3 +116,5 @@ The development of a theme using these files and configuation would normally pro
 1. **Gulp will watch for changes in your files.** Not only will your Sass files automatically process into CSS, but any changes to your Pattern Lab patterns and Drupal theme template files will trigger appropriate changes as well. This includes refreshing Browser Sync on each change so that the changes appear right away in your browser.
  
 1. **Put theme images in `/img-src`.** When you add image files in the `/img-src directory`, Gulp will automatically recognize those files, processing them for optimization, and move a copy to the `/images` directory. You should use `/images` in the path of your images when referencing them in SCSS.
+
+1. **Put theme template files in `/templates`.** This directory already contains several template files, lifted directly from Classy theme. Use these or add new ones within this file structure. When you make changes or add new files, a Gulp task will clear Drupal cache and refresh the browser. (See [this issue](https://github.com/startinggravity/Drupal-8-Theme/issues/1) for more details.)
