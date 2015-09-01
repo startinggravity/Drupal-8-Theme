@@ -1,8 +1,8 @@
 .DS_Store
-composer.lock
-config/*
-export/*
-packages/*
-public/*
-source/*
-vendor/*
+# composer.lock
+# config/*
+# export/*
+# packages/*
+# public/*
+# source/*
+# vendor/*
