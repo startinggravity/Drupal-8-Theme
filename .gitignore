@@ -3,6 +3,7 @@
 
 # Bower
 bower_components
+!pattern-lab/public/styleguide/bower_components
 
 # npm
 node_modules
