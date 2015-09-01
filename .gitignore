@@ -15,7 +15,3 @@ settings.json
 
 # PHPStorm
 .idea
-
-# Misc theme files
-.DS_Store
-img-src/
