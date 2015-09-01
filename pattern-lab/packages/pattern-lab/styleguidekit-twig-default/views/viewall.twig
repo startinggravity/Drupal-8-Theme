@@ -1,0 +1,23 @@
+
+<!-- View All Patterns in a Pattern Sub-Type -->
+<div class="sg-main" role="main">
+	
+	<!-- Patterns -->
+	<div id="sg-patterns">
+		{% for partial in partials %}
+			{% if partial.patternSectionSubtype %}
+				{% include "patternSectionSubtype.twig" %}
+			{% else %}
+				{% include "patternSection.twig" %}
+			{% endif %}
+		{% endfor %}
+	</div> <!--end #sg-patterns-->
+
+</div><!--end .sg-main-->
+
+<!-- JS to hook everything together and do annotations -->
+<script>
+	// handle injection of items from builder
+	var patternPartial = "{{ patternPartial }}";
+	var lineage = "";
+</script>
