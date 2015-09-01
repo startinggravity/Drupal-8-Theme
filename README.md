@@ -69,7 +69,7 @@ Editing may not be needed in your_theme.libraries.yml, or at least not right awa
 
 Edit line 1 of `gulpfile.js`, replacing `your-site.tld` with the domain of your local site.
 
-Now install all of the Node.js modules we need.
+Now install all of the Node.js modules we need. (This will take a while.)
 
 ```bash
 npm install
@@ -86,6 +86,8 @@ Finally, set up Pattern Lab.
 ```bash
 gulp generate-pattern-lab
 ```
+
+You're now ready to visit your Drupal site and enable the new theme.
 
 ## Post-installation Notes
 
