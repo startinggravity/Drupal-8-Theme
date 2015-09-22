@@ -91,9 +91,23 @@ You're now ready to visit your Drupal site and enable the new theme.
 
 ## Post-installation Notes
 
-Running `npm install` (step 11) and `gulp install-all` (step 12) will add several files in directories called node_modules and bower_components. The .gitignore file in your theme will prevent these files from being added to your repo. This is intentional because the files are only needed for development. 
+Running `npm install` and `gulp install-all` will add several files in directories called node_modules and bower_components. The .gitignore file in your theme will prevent these files from being added to your repo. This is intentional because the files are only needed for development. 
 
-If you are adding developers on a team who are editing the theme, after they have cloned your site's repo they will need to navigate to the theme directory and run the commands in steps 11, 12 and 13.
+If you are adding developers on a team who are editing the theme, after they have cloned your site's repo they will need to navigate to the theme directory and run these commands:
+
+```bash
+npm install
+gulp install-all
+```
+As well as either
+```bash
+gulp generate-pattern-lab
+```
+or
+```bash
+gulp build-dev
+```
+
 
 ## Using PatternLab
 
