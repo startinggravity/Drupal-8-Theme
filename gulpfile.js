@@ -1,4 +1,4 @@
-var domain          = 'healthit-d8.loc';  // Set this to your local development domain.
+var domain          = 'your-site.tld';  // Set this to your local development domain.
 
 // Gulp and node.
 var gulp            = require('gulp');
