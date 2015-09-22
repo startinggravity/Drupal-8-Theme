@@ -1,4 +1,4 @@
-var domain          = 'your-site.tld';  // Set this to your local development domain.
+var domain          = 'healthit-d8.loc';  // Set this to your local development domain.
 
 // Gulp and node.
 var gulp            = require('gulp');
@@ -93,7 +93,7 @@ var paths = {
 var files = {
     drupalStyleDest:    paths.drupalStyle.dest + 'style.css',
     drupalStyleSrc:     paths.drupalStyle.src + '**/*.scss',
-    drupalScriptsSrc:  paths.drupalScripts.src + '*.js',
+    drupalScriptsSrc:   paths.drupalScripts.src + '*.js',
     drupalScriptsDest:  paths.drupalScripts.dest + '*.js',
     drupalTemplateDest: paths.drupalTemplates.dest + '**/*.twig',
     plStyleSrc:         paths.plStyle.src + 'style.scss',
@@ -151,7 +151,8 @@ gulp.task('sass-drupal', function () {
 // Sync JS files in Drupal with Pattern Lab. If new files are added, you will need to edit
 // pattern-lab/source/_meta/_00-head.twig or pattern-lab/source/_meta/_01-footer.twig
 gulp.task('rsync-js', function () {
-    return gulp.src(files.drupalScriptsDest)
+    return gulp.src(files.drupalScriptsSrc)
+        .pipe(run('rsync -r js-src/* js/'))
         .pipe(run('rsync -r js/* pattern-lab/source/js/'))
 });
 
@@ -246,7 +247,7 @@ gulp.task('reload-bs', ['run-sass'], browserSync.reload);
 gulp.task('watch-files', ['run-sass'], function () {
     // Make browsers reload after tasks are complete.
     gulp.watch(files.drupalStyleSrc, ['reload-bs']);
-    gulp.watch(files.drupalScriptsDest, ['rsync-js']).on('change', browserSync.reload);
+    gulp.watch(files.drupalScriptsSrc, ['rsync-js']).on('change', browserSync.reload);
     gulp.watch(files.imagesSrc, ['optimize-images', 'optimize-images-svg']).on('change', browserSync.reload);
     gulp.watch(files.drupalTemplateDest, ['templates-watch']);
     gulp.watch(files.patterns, ['generate-pattern-lab']).on('change', browserSync.reload);

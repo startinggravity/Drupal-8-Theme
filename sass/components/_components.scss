@@ -1,6 +1,6 @@
 //////////////////////////////////////////
 //
-// Componentss (Known as Modules in SMACSS).
+// Components (Known as Modules in SMACSS).
 //
 // Reference: https://smacss.com/book/type-module.
 //
@@ -8,3 +8,6 @@
 
 @import "components_messages";
 @import "components_search-form";
+@import "components_primary-nav";
+@import "components_logo";
+@import "components_breadcrumbs";

@@ -4,6 +4,11 @@
 //
 //////////////////////////////////////////
 
+body {
+  background-color: $color-cream-brulee;
+  @include marginSize(0, 0, 0, 0);
+}
+
 body,
 p {
   color: $color-mine-shaft;
@@ -35,15 +40,18 @@ a {
   @include font($fontOpenSans, 700);
   &:hover {
     text-decoration: underline;
-    background-color: $color-wheatfield;
   }
   &:visited {
     text-decoration: underline;
   }
 }
 
+p a:hover,
+li a:hover {
+  background-color: $color-wheatfield;
+}
+
 img {
-  background-color: transparent;
   display: block;
 }
 

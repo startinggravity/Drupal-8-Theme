@@ -1,0 +1,14 @@
+//////////////////////////////////////////
+//
+// States - Active Menu.
+//
+//////////////////////////////////////////
+
+// The layout container moves right when active menu is applied.
+body.js-active-menu {
+  overflow: hidden;
+}
+
+body.js-active-menu .layout-container {
+  transform:translate3d(290px, 0, 0);
+}

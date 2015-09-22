@@ -1,0 +1,25 @@
+//////////////////////////////////////////
+//
+// Layout - Top Container.
+//
+//////////////////////////////////////////
+
+// Set up the layout of the top container region.
+.layout-container__top {
+  clear: both;
+  background-color: $color-wheatfield;
+  @include breakpoint($three-column) {
+    height: 185px;
+  }
+}
+
+.layout-container__top-inner {
+  max-width: 1200px;
+  @include marginSize(0, auto, 0, auto);
+}
+
+.logo__link {
+  @include breakpoint($three-column) {
+    @include grid-span(3, 1);
+  }
+}

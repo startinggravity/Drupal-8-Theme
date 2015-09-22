@@ -3,3 +3,19 @@
 // Layout - Breakpoints.
 //
 //////////////////////////////////////////
+
+$one-column: 0 559px;
+$two-column: 560px;
+$hamburger-menu: 0 860px;
+$three-column: 861px;
+$small-text-menu: 861px 1160px;
+
+.layout-content:before {
+  content: 'One column';
+  @include breakpoint($two-column) {
+    content: 'Two columns';
+  }
+  @include breakpoint($three-column) {
+    content: "Three columns"
+  }
+}

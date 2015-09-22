@@ -1,0 +1,77 @@
+{#
+/**
+ * @file
+ * Theme override to display a menu.
+ *
+ * Available variables:
+ * - menu_name: The machine name of the menu.
+ * - items: A nested list of menu items. Each menu item contains:
+ *   - attributes: HTML attributes for the menu item.
+ *   - below: The menu item child items.
+ *   - title: The menu link title.
+ *   - url: The menu link url, instance of \Drupal\Core\Url
+ *   - localized_options: Menu link localized options.
+ */
+#}
+{#{% import _self as menus %}#}
+
+{#&#123;&#35;#}
+  {#We call a macro which calls itself to render the full tree.#}
+  {#@see http://twig.sensiolabs.org/doc/tags/macro.html#}
+{#&#35;&#125;#}
+{#{{ menus.menu_links(items, attributes, 0) }}#}
+
+{#{% macro menu_links(items, attributes, menu_level) %}#}
+  {#{% import _self as menus %}#}
+  {#{% if items %}#}
+    {#{% if menu_level == 0 %}#}
+{#<ul{{ attributes.addClass('primary-nav') }}>#}
+  {#{% else %}#}
+  {#<ul class="primary-nav__sub">#}
+    {#{% endif %}#}
+    {#{% for item in items %}#}
+      {#<li{{ item.attributes.addClass('primary-nav__item') }}>#}
+        {#{{ link(item.title, item.url.setOptions({'set_active_class' : TRUE, 'attributes' : {'class' : 'primary-nav__link'}})) }}#}
+        {#{% if item.below %}#}
+          {#{{ menus.menu_links(item.below, attributes, menu_level + 1) }}#}
+        {#{% endif %}#}
+      {#</li>#}
+    {#{% endfor %}#}
+  {#</ul>#}
+  {#{% endif %}#}
+  {#{% endmacro %}#}
+
+{% import _self as menus %}
+
+{#
+  We call a macro which calls itself to render the full tree.
+  @see http://twig.sensiolabs.org/doc/tags/macro.html
+#}
+{{ menus.menu_links(items, attributes, 0) }}
+
+{% macro menu_links(items, attributes, menu_level) %}
+  {% import _self as menus %}
+  {% if items %}
+    {% if menu_level == 0 %}
+      <ul{{ attributes.addClass('primary-nav') }}>
+    {% elseif menu_level == 1 %}
+      <ul class="primary-nav__drop-level">
+    {% elseif menu_level == 2 %}
+      <ul class="primary-nav__drop-level2">
+    {% endif %}
+    {% for item in items %}
+      {% set counter = ( counter | default(0) ) + 1 %}
+      <li{{ item.attributes.addClass('primary-nav__item').removeClass('menu-item', 'menu-item--expanded') }}>
+        {% if item.below %}
+          <input type="checkbox" class="primary-nav__drop--{{ counter }}"/>
+          <label for="primary-nav__drop--{{ counter }}" class="primary-nav__toggle"></label>
+        {% endif %}
+        {{ link(item.title, item.url.setOptions({'set_active_class' : TRUE, 'attributes' : {'class' : 'primary-nav__link'}})) }}
+        {% if item.below %}
+          {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+        {% endif %}
+      </li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endmacro %}

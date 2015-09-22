@@ -1,0 +1,81 @@
+//////////////////////////////////////////
+//
+// States - Animation.
+//
+//////////////////////////////////////////
+
+/* Set up the Sass Map */
+
+$animations: (
+    'fade-in': (
+        0%: (
+            opacity: 0
+        ),
+        100%: (
+            opacity: 1
+        )
+    ),
+    'fade-flicker': (
+        0%: (
+            opacity: 1
+        ),
+        30%: (
+            opacity: 0
+        ),
+        60%: (
+            opacity: 1
+        ),
+        78%: (
+            opacity: 0
+        ),
+        100%: (
+            opacity: 1
+        )
+    )
+);
+
+/* Set mixins to create the keyframes. */
+
+@mixin keyframe-gen($name) {
+  @keyframes #{$name} {
+    @each $position, $change in map-get($animations, $name) {
+      #{$position} {
+        @each $prop, $val in $change {
+          #{$prop}: #{$val};
+        }
+      }
+    }
+  }
+};
+
+$included-animations: ();
+
+@mixin animate($name, $duration: 2s, $timing: ease-in) {
+  $exists: index($included-animations, '#{$name}');
+  @if not $exists {
+    @at-root {
+      @include keyframe-gen($name);
+    }
+    $included-animations: append($included-animations, '#{$name}') !global;
+  }
+
+  animation: $name $duration $timing;
+};
+
+/* Use the mixins like this.
+
+.fade-me-in {
+  @include animate('fade-in');
+}
+
+.also-fade-me-in {
+  @include animate('fade-in', 3s);
+}
+
+*/
+
+// Transitions.
+
+@mixin transition($args...) {
+  transition: $args;
+}

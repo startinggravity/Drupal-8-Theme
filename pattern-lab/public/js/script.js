@@ -1,1 +1,3 @@
-// JavaScript goes here.
+/**
+ * @file
+ */

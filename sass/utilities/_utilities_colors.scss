@@ -13,6 +13,7 @@ $color-san-marino-blue: #3f669b;
 $color-cinnabar: #ed403f;
 $color-totem-pole: #9d0f03;
 $color-sun: #fdb814;
+$color-cream-brulee: #ffe4a6;
 $color-wheatfield: #f4efd6;
 $color-mine-shaft: #2b2b2b;
 $color-gray: #818181;
@@ -20,6 +21,7 @@ $color-dusty-gray: #9c9c9c;
 $color-silver: #ccc;
 $color-alto: #dedede;
 $color-mercury: #eee;
+$color-white: #fff;
 
 // Pattern Lab color chips.
 
@@ -45,6 +47,10 @@ $color-mercury: #eee;
 
 .sun {
   background-color: $color-sun;
+}
+
+.cream-brulee {
+  background-color: $color-cream-brulee;
 }
 
 .wheatfield {
@@ -73,6 +79,10 @@ $color-mercury: #eee;
 
 .mercury {
   background-color: $color-mercury;
+}
+
+.white {
+  background-color: $color-white;
 }
 
 

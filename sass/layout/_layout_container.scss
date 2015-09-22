@@ -1,0 +1,29 @@
+//////////////////////////////////////////
+//
+// Layout - Container.
+//
+//////////////////////////////////////////
+
+// These additions fix positioning problems caused by core's admin toolbar.
+.toolbar-horizontal,
+.toolbar-vertical {
+  padding-top: 25px !important;
+}
+
+.toolbar-horizontal.toolbar-tray-open {
+  padding-top: 66px !important;
+}
+
+// This is a wrapper for all content regions.
+.layout-container {
+  height: 100vh;
+  min-height: 100%;
+  min-width: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  transition: all 200ms ease-in;
+  background-color: $color-white;
+  box-shadow: -10px 0 15px ($color-gray - 10%);
+  @include marginSize(0, 0, 0, 0);
+}

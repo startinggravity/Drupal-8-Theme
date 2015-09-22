@@ -4,6 +4,8 @@
 //
 //////////////////////////////////////////
 
+// Hide text.
+
 %hideText {
   position: absolute;
   width: 1px; /* Setting this to 0 make it invisible for VoiceOver */
@@ -14,6 +16,8 @@
   @include marginSize(-1px, -1px, -1px, -1px);
   @include paddingSize(0, 0, 0, 0);
 }
+
+// Messages.
 
 %alert {
   color: red;
@@ -59,4 +63,10 @@
     background-size: 16px 16px;
     @include marginSize(0, 0.2em, 0, 0);
   }
+}
+
+// Gradient colors.
+
+%white-to-wheatfield {
+  background-image: linear-gradient(to bottom, white, $color-wheatfield);
 }

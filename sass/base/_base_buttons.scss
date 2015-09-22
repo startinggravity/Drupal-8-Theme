@@ -13,13 +13,6 @@
   text-decoration: none;
   cursor: pointer;
   background: $color-san-marino-blue;
-//  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
-//  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
-//  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
-//  background-image: -o-linear-gradient(top, #3498db, #2980b9);
-  background-image: linear-gradient(to bottom, $color-san-marino-blue, $color-denim);
-//  -webkit-border-radius: 8;
-//  -moz-border-radius: 8;
   border-radius: 8px;
   @include marginSize(0, 1em, 1em, 1em);
   @include paddingSize(0.5em, 1em, 0.5em, 1em);
@@ -28,10 +21,5 @@
 
 .button:hover {
   background: $color-regal-blue;
-//  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
-//  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
-//  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
-//  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: linear-gradient(to bottom, $color-regal-blue, $color-san-marino-blue);
   text-decoration: none;
 }
