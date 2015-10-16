@@ -2,7 +2,7 @@ var domain          = 'your-site.tld';  // Set this to your local development do
 
 // Gulp and node.
 var gulp            = require('gulp');
-var shell           = require('gulp-shell')
+var shell           = require('gulp-shell');
 var install         = require('gulp-install');
 var plumber         = require('gulp-plumber');
 var watch           = require('gulp-watch');
