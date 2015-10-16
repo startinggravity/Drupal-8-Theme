@@ -2,7 +2,7 @@ var domain          = 'your-site.tld';  // Set this to your local development do
 
 // Gulp and node.
 var gulp            = require('gulp');
-var run             = require('gulp-run');
+var shell           = require('gulp-shell')
 var install         = require('gulp-install');
 var plumber         = require('gulp-plumber');
 var watch           = require('gulp-watch');
@@ -150,17 +150,16 @@ gulp.task('sass-drupal', function () {
  
 // Sync JS files in Drupal with Pattern Lab. If new files are added, you will need to edit
 // pattern-lab/source/_meta/_00-head.twig or pattern-lab/source/_meta/_01-footer.twig
-gulp.task('rsync-js', function () {
-    return gulp.src(files.drupalScriptsSrc)
-        .pipe(run('rsync -r js-src/* js/'))
-        .pipe(run('rsync -r js/* pattern-lab/source/js/'))
-});
+gulp.task('rsync-js', shell.task([
+        'rsync -r js-src/* js/',
+        'rsync -r js/* pattern-lab/source/js/'
+]));
 
 // Process Pattern Lab patterns.
 gulp.task('pattern-lab-patterns', function () {
     return gulp.src(files.patterns)
         .pipe(watch(files.patterns))
-        .pipe(run('php pattern-lab/core/console --generate'))
+        .pipe(shell('php pattern-lab/core/console --generate'))
 });
 
 // Pattern Lab Sass task.
@@ -224,21 +223,21 @@ gulp.task('test', function () {
 gulp.task('run-sass', ['sass-drupal', 'autoprefixer']);
 
 // Generate Pattern Lab.
-gulp.task('generate-pattern-lab', function () {
-    run('php pattern-lab/core/console --generate').exec()
-});
+gulp.task('generate-pattern-lab', shell.task([
+    'php pattern-lab/core/console --generate'
+]));
 
 // Use Drush to clear Drupal cache.
-gulp.task('clear-cache', function () {
-    run('drush cache-rebuild').exec()
-});
+gulp.task('clear-cache', shell.task([
+    'drush cache-rebuild'
+]));
 
 // When Drupal template files are updated we need to clear cache and the refresh the browser.
 // We use a command line method of reloading Browser Sync so that we can add a delay before it fires.
 // Otherwise, Browser Sync will fire before the cache is cleared.
-gulp.task('templates-watch', ['clear-cache'], function () {
-    run('sleep 15s && browser-sync reload').exec()
-});
+gulp.task('templates-watch', ['clear-cache'], shell.task([
+    'sleep 15s && browser-sync reload'
+]));
 
 // Watch file changes and trigger Browser Sync.
 gulp.task('reload-bs', ['run-sass'], browserSync.reload);
