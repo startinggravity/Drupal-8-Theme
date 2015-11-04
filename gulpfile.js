@@ -2,7 +2,7 @@ var domain          = 'your-site.tld';  // Set this to your local development do
 
 // Gulp and node.
 var gulp            = require('gulp');
-var shell           = require('gulp-shell');
+var shell           = require('gulp-shell')
 var install         = require('gulp-install');
 var plumber         = require('gulp-plumber');
 var watch           = require('gulp-watch');
@@ -13,6 +13,7 @@ var notify          = require('gulp-notify');
 
 // Basic workflow.
 var sass            = require('gulp-sass');
+var neat            = require('node-neat').includePaths;
 var sourcemaps      = require('gulp-sourcemaps');
 var autoprefixer    = require('gulp-autoprefixer');
 var browserSync     = require('browser-sync');
@@ -91,8 +92,8 @@ var paths = {
 
 // Files with paths.
 var files = {
-    drupalStyleDest:    paths.drupalStyle.dest + 'style.css',
     drupalStyleSrc:     paths.drupalStyle.src + '**/*.scss',
+    drupalStyleDest:    paths.drupalStyle.dest + 'style.css',
     drupalScriptsSrc:   paths.drupalScripts.src + '*.js',
     drupalScriptsDest:  paths.drupalScripts.dest + '*.js',
     drupalTemplateDest: paths.drupalTemplates.dest + '**/*.twig',
@@ -140,6 +141,7 @@ gulp.task('sass-drupal', function () {
         }))
         .pipe(sass({
             //outputStyle: 'compressed',
+            includePaths: ['styles'].concat(neat),
             outputStyle: 'nested',
             precision: 10
         }))
