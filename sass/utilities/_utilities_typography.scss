@@ -23,6 +23,9 @@ $font-light: 300;
 $font-bold: 700;
 $font-extra-bold: 800;
 
+// Base font size.
+$base-font-size: 12px;
+
 // Mixin for setting font sizes with px and rem.
 @mixin font-size($font-size){
   font-size: $font-size;
