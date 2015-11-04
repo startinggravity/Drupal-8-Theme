@@ -39,6 +39,8 @@
     "imagemin-pngquant": "^4.1.2",
     "jshint-stylish": "^2.0.1",
     "ngrok": "^0.1.99",
+    "node-bourbon": "^4.2.3",
+    "node-neat": "^1.7.2",
     "orchestrator": "^0.3.7",
     "phantomas": "^1.11.0",
     "psi": "^1.0.6",
