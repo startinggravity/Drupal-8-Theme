@@ -4,6 +4,7 @@ description: 'A starter theme for Drupal 8'
 package: Custom
 version: VERSION
 core: 8.x
+base theme: classy
 
 # Locate files
 libraries:
