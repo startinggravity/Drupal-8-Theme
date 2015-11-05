@@ -8,24 +8,6 @@
   @include padding(0.5em 0.5em 0.5em 0.5em);
 }
 
-@mixin messages($message-color){
-  background-color: tint($message-color, 90%);
-  box-shadow: -8px 0 0 $message-color;
-  color: $message-color;
-  @include padding(1em 0.4em 1em 0.4em);
-  &:before {
-    content: '';
-    display: inline-block;
-    width: 14px;
-    height: 14px;
-    vertical-align: middle;
-    background-repeat: no-repeat;
-    background-size: 14px 14px;
-    background-position: 0 -1px;
-    @include margin(0 0.6em 0 0);
-  }
-}
-
 .messages--status {
   @include messages(green);
   &:before {
