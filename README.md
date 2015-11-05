@@ -12,7 +12,7 @@ This repo includes:
 * [Browser Sync](http://www.browsersync.io) for simultaneous testing on multiple browsers
 * [Image Optimization](https://www.npmjs.com/package/gulp-image-optimization) for minifying PNG, JPEG, GIF and SVG images on the fly
 * [Bourbon](http://bourbon.io) Sass mixin library
-* [Neat](http://neat.bourbon.io) for semantic grids that is designed to work with Bourbon
+* [Neat](http://neat.bourbon.io) for semantic grids that are designed to work with Bourbon
 * [Pattern Lab](http://patternlab.io) for designing in the browser and creating a living styleguide
 * And much more theme development goodness
 
