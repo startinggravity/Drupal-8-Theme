@@ -126,12 +126,6 @@ gulp.task('browser-sync', function() {
         notify: true
     });
 });
-
-// Automatically install npm and bower packages found in package.json and bower.json.
-gulp.task('install', function () {
-    return gulp.src(['./package.json'])
-        .pipe(install());
-});
  
 // Drupal theme Sass task.
 gulp.task('sass-drupal', function () {
