@@ -5,31 +5,26 @@
 //////////////////////////////////////////
 
 // Input, label.
-
 label {
   vertical-align: middle;
-  @include marginSize(0, 0.3em, 0, 0);
-  @include font($fontOpenSans, 700);
+  @include margin(0 0.3em 0 0);
 }
 
 // Input, field.
-
 input,
 textarea,
 fieldset {
   border: 1px solid $color-silver;
-  @include marginSize(0.3em, 0, 0.3em, 0);
-  @include paddingSize(0.1em, 0.2em, 0.1em, 0.2em);
-  @include font($fontOpenSans, 400);
+  @include margin(0.3em 0 0.3em 0);
+  @include padding(0.1em 0.2em 0.1em 0.2em);
   @include font-size(12px);
 }
 
 input.form-radio {
-  @include marginSize(0.3em, 0.3em, 0.3em, 0);
+  @include margin(0.3em 0.3em 0.3em 0);
 }
 
 // Input, required.
-
 .form-required:after {
   content: '';
   vertical-align: super;
@@ -39,13 +34,15 @@ input.form-radio {
   background-image: url(/core/misc/icons/ee0000/required.svg);
   background-repeat: no-repeat;
   background-size: 6px 6px;
-  @include marginSize(0, 0.3em, 0, 0.3em);
+  @include margin(0 0.3em 0 0.3em);
 }
 
 // Input, error.
-
 .form-item--error-message {
-  @extend %alert;
+  @include messages(red);
+  &:before {
+    background-image: url(/core/misc/icons/e32700/error.svg);
+  }
 }
 
 .is-error {
@@ -53,9 +50,11 @@ input.form-radio {
 }
 
 // Input, valid.
-
 .valid {
-  @extend %valid;
+  @include messages(green);
+  &:before {
+    background-image: url(/core/misc/icons/73b355/check.svg);
+  }
 }
 
 .is-valid {
