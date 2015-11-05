@@ -1,8 +1,8 @@
 # Installation
 
-Developing this Drupal 8 theme requires several components that are not provided natively by most operating systems. The following instructions presume no previous use of Node.js, NPM, Gulp, Bower and such, and presumes installation on a computer running MacOSX.
+Developing this Drupal 8 theme requires several components that are not provided natively by most operating systems. The following instructions presume no previous use of Node.js, NPM, Gulp and such, and presumes installation on a computer running MacOSX.
 
-If you are certain you have used Node.js, Gulp, Bower and Drush before, you can skip these instructions and continue with the information provided on the [README page](https://github.com/startinggravity/Drupal-8-Theme/blob/master/README.md#installation-instructions).
+If you are certain you have used Node.js, Bower and Drush before, you can skip these instructions and continue with the information provided on the [README page](https://github.com/startinggravity/Drupal-8-Theme/blob/master/README.md#installation-instructions).
 
 ## Node.js
 
@@ -38,14 +38,6 @@ We are using Gulp to automate many development steps. It's best to install it gl
 
 ```bash
 npm install -g gulp
-```
-
-## Bower
-
-Bower is another package manager. It's used where we need to manage files not possible with Gulp. Install it globally with:
-
-```bash
-npm install -g bower
 ```
 
 ## Drush

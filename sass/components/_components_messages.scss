@@ -5,31 +5,47 @@
 //////////////////////////////////////////
 
 .message {
-  @include paddingSize(0.5em, 0.5em, 0.5em, 0.5em);
+  @include padding(0.5em 0.5em 0.5em 0.5em);
+}
+
+@mixin messages($message-color){
+  background-color: tint($message-color, 90%);
+  box-shadow: -8px 0 0 $message-color;
+  color: $message-color;
+  @include padding(1em 0.4em 1em 0.4em);
+  &:before {
+    content: '';
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    background-size: 14px 14px;
+    background-position: 0 -1px;
+    @include margin(0 0.6em 0 0);
+  }
 }
 
 .messages--status {
-  background-color: tint(green, 90%);
-  background-image: none;
-  box-shadow: -8px 0 0 green;
-  @include paddingSize(0.4em, 0.4em, 0.4em, 0.4em);
-  @extend %valid;
+  @include messages(green);
+  &:before {
+    background-image: url(/core/misc/icons/73b355/check.svg);
+  }
 }
 
 .messages--error {
-  background-color: tint(red, 90%);
-  background-image: none;
-  box-shadow: -8px 0 0 red;
-  @include paddingSize(0.4em, 0.4em, 0.4em, 0.4em);
-  @extend %alert;
+  @include messages(red);
+  &:before {
+    background-image: url(/core/misc/icons/e32700/error.svg);
+  }
 }
 
 .messages--warning {
-  background-color: tint(yellow, 90%);
-  background-image: none;
-  box-shadow: -8px 0 0 orange;
-  @include paddingSize(0.4em, 0.4em, 0.4em, 0.4em);
-  @extend %info;
+  @include messages(yellow);
+  color: orange;
+  &:before {
+    background-image: url(/core/misc/icons/e29700/warning.svg);
+  }
 }
 
 div[role=alert] {

@@ -4,11 +4,6 @@
 //
 //////////////////////////////////////////
 
-body {
-  background-color: $color-cream-brulee;
-  @include marginSize(0, 0, 0, 0);
-}
-
 body,
 p {
   color: $color-mine-shaft;
@@ -46,11 +41,6 @@ a {
   }
 }
 
-p a:hover,
-li a:hover {
-  background-color: $color-wheatfield;
-}
-
 img {
   display: block;
 }
@@ -60,6 +50,6 @@ hr {
   height: 2px;
   border: 0;
   background: $color-dusty-gray;
-  @include marginSize(1em, 0, 1em, 0);
-  @include paddingSize(0, 0, 0, 0);
+  @include margin(1em 0 1em 0);
+  @include padding(0 0 0 0);
 }

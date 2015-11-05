@@ -128,8 +128,8 @@ gulp.task('browser-sync', function() {
 });
 
 // Automatically install npm and bower packages found in package.json and bower.json.
-gulp.task('install-all', function () {
-    return gulp.src(['./bower.json', './package.json'])
+gulp.task('install', function () {
+    return gulp.src(['./package.json'])
         .pipe(install());
 });
  

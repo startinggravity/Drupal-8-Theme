@@ -1,15 +1,18 @@
 # Drupal 8 Theme
 
-The files contained in this repo provide a starting point for developing a Drupal 8 theme. Consider it a work in progress. There is much that needs to be added and finished. (See the [TODO list here](https://github.com/startinggravity/Drupal-8-Theme/blob/master/TODO.md).)
+The files contained in this repo provide a starting point for developing a Drupal 8 theme. It is a subtheme of Classy.
 
-There are many concepts at play here to allow you to create a custom theme using tools for performance, testing, and fast development.
+Consider this a work in progress. There is much that needs to be added and finished. (See the [TODO list here](https://github.com/startinggravity/Drupal-8-Theme/blob/master/TODO.md).)
+
+There are many concepts at play here to allow you to create a custom theme using tools for performance, accessibility, testing, and fast development.
 
 This repo includes:
 * [Gulp](http://gulpjs.com) for task-running
 * [Sass](http://sass-lang.com) for pre-processing CSS, using Libsass so we don't get bogged down with Ruby
 * [Browser Sync](http://www.browsersync.io) for simultaneous testing on multiple browsers
 * [Image Optimization](https://www.npmjs.com/package/gulp-image-optimization) for minifying PNG, JPEG, GIF and SVG images on the fly
-* [Singularity Grid System](https://github.com/at-import/Singularity) for a responsive grid framework
+* [Bourbon](http://bourbon.io) Sass mixin library
+* [Neat](http://neat.bourbon.io) for semantic grids that are designed to work with Bourbon
 * [Pattern Lab](http://patternlab.io) for designing in the browser and creating a living styleguide
 * And much more theme development goodness
 
@@ -91,13 +94,13 @@ You're now ready to visit your Drupal site and enable the new theme.
 
 ## Post-installation Notes
 
-Running `npm install` and `gulp install-all` will add several files in directories called node_modules and bower_components. The .gitignore file in your theme will prevent these files from being added to your repo. This is intentional because the files are only needed for development. 
+Running `npm install` and `gulp install` will add several files in directories called node_modules. The .gitignore file in your theme will prevent these files from being added to your repo. This is intentional because the files are only needed for development. 
 
 If you are adding developers on a team who are editing the theme, after they have cloned your site's repo they will need to navigate to the theme directory and run these commands:
 
 ```bash
 npm install
-gulp install-all
+gulp install
 ```
 As well as either
 ```bash

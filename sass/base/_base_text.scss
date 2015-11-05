@@ -17,5 +17,5 @@ time {
 // Remove the h1 display from the home page.
 
 .path-frontpage h1 {
-  @extend %hideText;
+  @include hide-text;
 }
