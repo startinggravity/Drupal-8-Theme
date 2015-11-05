@@ -78,12 +78,6 @@ Now install all of the Node.js modules we need. (This will take a while.)
 npm install
 ```
 
-Then install the Bower modules.
-
-```bash
-gulp install-all
-```
-
 Finally, set up Pattern Lab.
 
 ```bash
@@ -100,7 +94,6 @@ If you are adding developers on a team who are editing the theme, after they hav
 
 ```bash
 npm install
-gulp install
 ```
 As well as either
 ```bash
