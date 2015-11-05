@@ -1,21 +1,20 @@
-drupal8_theme.singlecolumn:
-  label: single colum
-  mediaQuery: '(min-width: 0px)'
-  weight: 2
-  multipliers:
-    - 1x
-    - 2x
-drupal8_theme.twocolumn:
-  label: two column
-  mediaQuery: 'all and (min-width: 560px) and (max-width: 860px)'
+drupal8_theme.mobile:
+  label: mobile
+  mediaQuery: 'all and (min-width: 0px) and (max-width: 860px)'
   weight: 1
   multipliers:
     - 1x
     - 2x
-drupal8_theme.threecolumn:
-  label: three column
-  mediaQuery: 'all and (min-width: 851px)'
+drupal8_theme.desktop:
+  label: desktop
+  mediaQuery: 'all and (min-width: 861px) and (max-width: 1159px)'
   weight: 0
+  multipliers:
+    - 1x
+    - 2x
+drupal8_theme.fullwidth:
+  label: 'full width'
+  mediaQuery: 'all and (min-width: 1160px)'
   multipliers:
     - 1x
     - 2x
