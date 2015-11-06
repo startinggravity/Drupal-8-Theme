@@ -48,6 +48,18 @@ $theme-colors: (
   @return null;
 }
 
+// Now use the color variables.
+$color-black: color(mine-shaft);
+$color-gray: color(dusty-gray);
+$color-light: color(silver);
+$color-even: color(alto);
+$color-odd: color(mercury);
+$color-link: color(venice-blue);
+$color-link-hover: color(cinnabar);
+$color-primary: color(regal-blue);
+$color-secondary: color(cinnabar);
+$color-support: color(wheatfield);
+
 // Pattern Lab color chips.
 .regal-blue {
   background-color: color(regal-blue);
