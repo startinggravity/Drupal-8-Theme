@@ -6,19 +6,19 @@
 
 body,
 p {
-  color: $color-mine-shaft;
+  color: $color-black;
   @include font-size(12px);
-  @include font($fontOpenSans, 400);
+  @include font($fontOpenSans, $font-normal);
 }
 
 p em,
 p i,
 blockquote {
-  @include font($fontOpenSans, 400, italic);
+  @include font($fontOpenSans, $font-normal-italic);
 }
 
 p strong {
-  @include font($fontOpenSans, 700);
+  @include font($fontOpenSans, $font-bold);
 }
 
 h1,
@@ -26,13 +26,13 @@ h2,
 h3,
 h4,
 h5 {
-  @include font($fontOpenSans, 800);
+  @include font($fontOpenSans, $font-extra-bold);
 }
 
 a {
-  color: $color-san-marino-blue;
+  color: $color-link;
   text-decoration: none;
-  @include font($fontOpenSans, 700);
+  @include font($fontOpenSans, $font-bold);
   &:hover {
     text-decoration: underline;
   }
@@ -49,7 +49,7 @@ hr {
   display: block;
   height: 2px;
   border: 0;
-  background: $color-dusty-gray;
+  background: $color-gray;
   @include margin(1em 0 1em 0);
   @include padding(0 0 0 0);
 }
