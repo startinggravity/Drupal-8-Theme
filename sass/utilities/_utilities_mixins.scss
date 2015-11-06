@@ -4,6 +4,7 @@
 //
 //////////////////////////////////////////
 
+// Mixin for alert, warning messages.
 @mixin messages($message-color){
   background-color: tint($message-color, 90%);
   box-shadow: -8px 0 0 $message-color;
@@ -21,3 +22,19 @@
     @include margin(0 0.6em 0 0);
   }
 }
+
+// Mixin for setting font family and weight.
+// See _utilities_typpography.scss for font variables.
+@mixin font($fontfamily, $fontweight){
+  font-family: $fontfamily;
+  font-weight: $fontweight;
+}
+
+// Mixin for setting font sizes with px and rem.
+@mixin font-size($font-size){
+  font-size: $font-size;
+  font-size: ($font-size/$base-font-size)*1rem;
+}
+
+// Example for setting font size.
+// @include font-size(11px);
