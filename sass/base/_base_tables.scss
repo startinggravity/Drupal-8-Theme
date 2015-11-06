@@ -6,16 +6,16 @@
 
 table {
   width: 100%;
-  border: 1px solid $color-silver;
+  border: 1px solid $color-light;
   border-spacing: 0;
 }
 
 thead th {
-  border-bottom: 1px solid $color-silver;
+  border-bottom: 1px solid $color-light;
 }
 
 tfoot th {
-  border-top: 1px solid $color-silver;
+  border-top: 1px solid $color-light;
 }
 
 th {
@@ -29,9 +29,9 @@ td {
 }
 
 .even {
-  background-color: $color-alto;
+  background-color: $color-even;
 }
 
 .odd {
-  background-color: $color-mercury;
+  background-color: $color-odd;
 }
