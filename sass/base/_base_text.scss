@@ -11,7 +11,7 @@
 
 time {
   color: $color-gray;
-  @include font($fontOpenSans, 400, italic);
+  @include font($fontOpenSans, $font-normal-italic);
 }
 
 // Remove the h1 display from the home page.
