@@ -4,6 +4,10 @@
 //
 //////////////////////
 
+.visually-hidden {
+  @include hide-text;
+}
+
 // This is just for Pattern Lab. For hiding text with an image, use `@include hide-text`. For more information,
 // see http://bourbon.io/docs/#hide-text.
 
