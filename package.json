@@ -41,6 +41,7 @@
     "ngrok": "^0.1.99",
     "node-bourbon": "^4.2.3",
     "node-neat": "^1.7.2",
+    "node-normalize-scss": "^1.0.3",
     "orchestrator": "^0.3.7",
     "phantomas": "^1.11.0",
     "psi": "^1.0.6",
