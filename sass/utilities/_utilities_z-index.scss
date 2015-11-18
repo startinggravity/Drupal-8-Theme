@@ -1,0 +1,30 @@
+//////////////////////////////////////////
+//
+// Utilities - Z-index.
+//
+// Reference: https://jonsuh.com/blog/organizing-z-index-with-sass/.
+//
+//////////////////////////////////////////
+
+$z-index: (
+    overlay:                200,
+    logo:                   40,
+    primary:                30,
+    header:                 20,
+    footer:                 10,
+    search:                 2,
+    menu:                   1,
+    base:                   0,
+);
+
+@function z-index($key) {
+  @return map-get($z-index, $key);
+}
+
+@mixin z-index($key) {
+  z-index: z-index($key);
+}
+
+header {
+  @include z-index(header);
+}
