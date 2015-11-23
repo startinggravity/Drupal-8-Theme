@@ -3,7 +3,6 @@ var domain          = 'your-site.tld';  // Set this to your local development do
 // Gulp and node.
 var gulp            = require('gulp');
 var shell           = require('gulp-shell')
-var install         = require('gulp-install');
 var plumber         = require('gulp-plumber');
 var watch           = require('gulp-watch');
 var gulpFilter      = require('gulp-filter');
@@ -242,7 +241,7 @@ gulp.task('reload-bs', ['run-sass'], browserSync.reload);
 gulp.task('watch-files', ['run-sass'], function () {
     // Make browsers reload after tasks are complete.
     gulp.watch(files.drupalStyleSrc, ['reload-bs']);
-    gulp.watch(files.drupalScriptsSrc, ['rsync-js']).on('change', browserSync.reload);
+    gulp.watch(files.drupalScriptsSrc, ['rsync-js', 'clear-cache']).on('change', browserSync.reload);
     gulp.watch(files.imagesSrc, ['optimize-images', 'optimize-images-svg']).on('change', browserSync.reload);
     gulp.watch(files.drupalTemplateDest, ['templates-watch']);
     gulp.watch(files.patterns, ['generate-pattern-lab']).on('change', browserSync.reload);
