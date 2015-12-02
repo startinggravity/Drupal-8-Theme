@@ -6,15 +6,15 @@
 
 $base-border-color: $color-gray !default;
 $base-background-color: color(white) !default;
-$base-spacing: 1.5em !default;
-$action-color: darken($color-light, 2) !default;
+$base-spacing: 0.5em !default;
+$action-color: $color-support !default;
 $dark-gray: $color-gray !default;
 $medium-screen: em(640) !default;
-$tab-link-color: $color-link !default;
-$tab-border: 1px solid $base-border-color !default;
-$tab-active-background: color(white) !default;
-$tab-inactive-color: $color-light !default;
-$tab-inactive-hover-color: $color-link-hover !default;
+$tab-link-color: $color-link;
+$tab-border: 1px solid $base-border-color;
+$tab-active-background: color(white);
+$tab-inactive-color: $color-light;
+$tab-inactive-hover-color: $color-link-hover;
 
 ul.tabs {
   line-height: 1;
@@ -24,7 +24,9 @@ ul.tabs {
   li {
     list-style: none;
     display: inline;
-    @include margin(null 0.2em null null);
+    &:first-child {
+      @include margin(0 0 0 1em);
+    }
   }
   a {
     padding: ($base-spacing / 2) $gutter;
