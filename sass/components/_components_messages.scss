@@ -8,28 +8,26 @@
   @include padding(0.5em 0.5em 0.5em 0.5em);
 }
 
+.messages {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  border-radius: 2px;
+  width: 100%;
+  @include margin(1em 0 1em 0);
+}
+
 .messages--status {
   @include messages(green);
-  &:before {
-    background-image: url(/core/misc/icons/73b355/check.svg);
-  }
+  background-image: url(/core/misc/icons/73b355/check.svg);
 }
 
 .messages--error {
   @include messages(red);
-  &:before {
-    background-image: url(/core/misc/icons/e32700/error.svg);
-  }
+  background-image: url(/core/misc/icons/e32700/error.svg);
 }
 
 .messages--warning {
   @include messages(yellow);
   color: orange;
-  &:before {
-    background-image: url(/core/misc/icons/e29700/warning.svg);
-  }
-}
-
-div[role=alert] {
-  display: inline-block;
+  background-image: url(/core/misc/icons/e29700/warning.svg);
 }
