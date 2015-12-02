@@ -1,0 +1,54 @@
+//////////////////////////////////////////
+//
+// Components - Tabs.
+//
+//////////////////////////////////////////
+
+$base-border-color: $color-gray !default;
+$base-background-color: color(white) !default;
+$base-spacing: 1.5em !default;
+$action-color: darken($color-light, 2) !default;
+$dark-gray: $color-gray !default;
+$medium-screen: em(640) !default;
+$tab-link-color: $color-link !default;
+$tab-border: 1px solid $base-border-color !default;
+$tab-active-background: color(white) !default;
+$tab-inactive-color: $color-light !default;
+$tab-inactive-hover-color: $color-link-hover !default;
+
+ul.tabs {
+  line-height: 1;
+  padding: 0;
+  border-bottom: $tab-border;
+  @include clearfix;
+  li {
+    list-style: none;
+    display: inline;
+    @include margin(null 0.2em null null);
+  }
+  a {
+    padding: ($base-spacing / 2) $gutter;
+    margin-bottom: -1px;
+    background-color: $tab-inactive-color;
+    border-top: $tab-border;
+    border-right: $tab-border;
+    border-bottom: $tab-border;
+    border-left: $tab-border;
+    border-top-left-radius: 0.3em;
+    border-top-right-radius: 0.3em;
+    color: $tab-link-color;
+    text-decoration: none;
+    @include inline-block;
+    &:hover {
+      color: $action-color;
+      background-color: $action-color;
+    }
+    &:focus {
+      outline: none;
+    }
+    &.is-active {
+      background-color: $tab-active-background;
+      border-bottom: 1px solid $tab-active-background;
+    }
+  }
+}
