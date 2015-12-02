@@ -6,11 +6,16 @@ version: VERSION
 core: 8.x
 base theme: classy
 
-# Locate files
+# Locate files.
 libraries:
   - drupal8_theme/globalstyling
+  
+# Remove files.
+stylesheets-remove:
+  - core/themes/classy/css/components/messages.css
+  - core/themes/classy/css/components/tabs.css
 
-# Specify regions
+# Specify regions.
 regions:
   header: Header
   primary_menu: 'Primary menu'
