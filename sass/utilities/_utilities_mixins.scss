@@ -7,20 +7,12 @@
 // Mixin for alert, warning messages.
 @mixin messages($message-color){
   background-color: tint($message-color, 90%);
-  box-shadow: -8px 0 0 $message-color;
+  border-left: 8px solid $message-color;
   color: $message-color;
-  @include padding(1em 0.4em 1em 0.4em);
-  &:before {
-    content: '';
-    display: inline-block;
-    width: 14px;
-    height: 14px;
-    vertical-align: middle;
+  @include padding(1em 0.4em 1em 2em);
     background-repeat: no-repeat;
-    background-size: 14px 14px;
-    background-position: 0 -1px;
-    @include margin(0 0.6em 0 0);
-  }
+    background-size: 1em 1em;
+    background-position: 0.5em 1.1em;
 }
 
 // Mixin for setting font family and weight.
