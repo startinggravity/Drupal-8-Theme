@@ -4,6 +4,13 @@
 //
 //////////////////////////////////////////
 
-$mobile: new-breakpoint(min-width 0px max-width 860px, 6); // The hamburger icon is used within these breakpoints.
-$desktop: new-breakpoint(min-width 861px 12);  // The primary menu appears starting at this breaking point.
-$full-width: new-breakpoint(min-width 1160px 12); // The primary menu appears to the right of the logo.
+$first-breakpoint-value: 0px;
+$second-breakpoint-value: 860px;
+$third-breakpoint-value: 1160px;
+
+// The hamburger icon is used within these breakpoints.
+$mobile: new-breakpoint(min-width $first-breakpoint-value max-width $second-breakpoint-value);
+// The primary menu appears starting at this breaking point.
+$desktop: new-breakpoint(min-width $second-breakpoint-value + 1);
+// The primary menu appears to the right of the logo.
+$full-width: new-breakpoint(min-width $third-breakpoint-value + 1);
