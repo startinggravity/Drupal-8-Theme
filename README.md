@@ -1,5 +1,7 @@
 # Drupal 8 Theme
 
+## This project has been archived. It is obsolete, and there is a security vulnerability in the version of twig/twig used.
+
 The files contained in this repo provide a starting point for developing a Drupal 8 theme. It is a subtheme of Classy.
 
 Consider this a work in progress. There is much that needs to be added and finished. (See the [TODO list here](https://github.com/startinggravity/Drupal-8-Theme/blob/master/TODO.md).)
